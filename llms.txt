@@ -1,0 +1,50 @@
+# Typtijgers
+
+> Gratis Nederlandse online typcursus voor kinderen, gemaakt voor het QWERTY-toetsenbord
+> zoals dat in Nederland gebruikt wordt. 45 lessen in 5 modules, plus 4 Letterregen-spellen
+> tussen de modules. Geen account, geen reclame, geen cookies. Werkt in de browser en ook
+> offline. Eindigt met een eindexamen en een printbaar diploma.
+
+Typtijgers is een privéproject, gemaakt voor de eigen kinderen van de maker en gratis
+gedeeld. De cursus is in het Nederlands en leert blind typen: alle vingers op de juiste
+toetsen, zonder naar het toetsenbord te kijken.
+
+## Wat de cursus inhoudt
+
+- **45 lessen in 5 modules**: Beginner (letters leren, 13 lessen), Inslijten (10),
+  Sneller (10), Meester (leestekens, getallen en langere teksten, 10), Examen
+  (proefexamen en eindexamen, 2).
+- **4 Letterregen-stations**: tussen elke module een typespel waarin vallende letters
+  weggetypt moeten worden. Je moet een puntendoel halen om verder te mogen.
+- **Drie niveaus** die je zelf kiest en altijd kunt wisselen, ook halverwege. Ze zijn
+  niet aan een leeftijd gekoppeld: Aapje (grote letters, korte woordjes, nooit tijdsdruk),
+  Panter (woorden en zinnen met snelheid) en Tijger (lange zinnen en een snelheidsdoel).
+- **Hulp op het scherm**: een toetsenbord dat de volgende toets aanwijst en twee handen
+  waarop de juiste vinger oplicht. Elke vinger heeft een eigen kleur, die overeenkomt met
+  de kleur van de toets. Les 1 gaat alleen over de namen van de vingers.
+- **Belonen**: sterren per les, 13 medailles, tijgerpunten, rangen, een winkeltje om de
+  tijger aan te kleden, en een combo-teller voor hoeveel aanslagen je goed op een rij hebt.
+- **Voor ouders**: een printbaar rapport per speler met sterren, nauwkeurigheid en snelheid.
+
+## Praktisch
+
+- **Kosten**: gratis, en dat blijft zo. Geen advertenties, geen in-app aankopen.
+- **Account**: niet nodig. Er wordt niets naar een server gestuurd.
+- **Voortgang**: staat in localStorage op het apparaat zelf, niet in cookies en niet in
+  de cloud. Met een voortgangscode kun je overstappen naar een ander apparaat.
+- **Toetsenbord**: Nederlands QWERTY (US-International). Tekens die op dat toetsenbord
+  een dode toets zijn (' " ` ^ ~) komen bewust niet in de lessen voor.
+- **Apparaat**: een computer of laptop met een echt toetsenbord. Op een telefoon of tablet
+  zonder los toetsenbord leer je geen blind typen.
+- **Taal**: Nederlands.
+
+## Pagina's
+
+- [Startpagina](https://www.typtijgers.nl/): wat de cursus is, de drie niveaus, en het feedbackformulier.
+- [De cursus](https://www.typtijgers.nl/cursus): de cursus zelf, start direct in de browser.
+- [Privacy](https://www.typtijgers.nl/privacy): wat er wel en niet wordt bewaard.
+
+## Status
+
+De site is nieuw en wordt nog verbeterd. Feedback is welkom via het formulier op de
+startpagina; daar wordt niet om een naam of e-mailadres gevraagd.

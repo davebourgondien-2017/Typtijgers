@@ -1,0 +1,107 @@
+/* ==========================================================
+   Typtijgers - stijl voor de site rondom de cursus
+   De cursus zelf (Typtijgers.html) heeft zijn eigen stijl,
+   zodat dat bestand ook los, zonder internet, blijft werken.
+   ========================================================== */
+:root{
+  --jungle:#1f7a4d; --donkergroen:#0f3d24; --groen:#2f9e44; --blad:#74c476;
+  --oranje:#e8862a; --geel:#fcc419; --room:#fffdf5; --inkt:#1d2b22;
+  --rad:20px;
+  --speels:"Comic Sans MS","Trebuchet MS",Verdana,sans-serif;
+  --lees:system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;font-family:var(--lees);color:var(--inkt);line-height:1.6;
+  background:linear-gradient(170deg,#0f3d24 0%,#1f7a4d 45%,#2f9e44 100%);
+  background-attachment:fixed;
+}
+h1,h2,h3{font-family:var(--speels);line-height:1.2;margin:0 0 .5em}
+h1{font-size:clamp(1.8rem,5vw,3rem)}
+h2{font-size:clamp(1.4rem,3.6vw,2rem)}
+h3{font-size:1.15rem}
+p{margin:0 0 1em}
+a{color:#0b5c36}
+img,svg{max-width:100%}
+
+.wrap{max-width:980px;margin:0 auto;padding:0 16px}
+.kaart{background:var(--room);border-radius:var(--rad);padding:26px;box-shadow:0 10px 30px rgba(0,0,0,.18);margin-bottom:22px}
+
+/* ---------- kop ---------- */
+.sitekop{display:flex;align-items:center;gap:12px;padding:16px 0;flex-wrap:wrap}
+.sitekop .naam{font-family:var(--speels);font-size:clamp(1.4rem,4vw,2rem);color:#fff;font-weight:bold;text-decoration:none}
+.sitekop .tijgerkop{width:clamp(42px,7vw,62px);flex:none}
+.sitekop nav{margin-left:auto;display:flex;gap:14px;flex-wrap:wrap}
+.sitekop nav a{color:#fff;text-decoration:none;font-weight:bold;border-bottom:2px solid rgba(255,255,255,.45);padding-bottom:2px}
+.sitekop nav a:hover{border-bottom-color:#fff}
+
+/* ---------- beta-strook ---------- */
+.beta{
+  background:#fff8e1;border:3px solid var(--geel);border-radius:16px;
+  padding:12px 18px;margin-bottom:22px;font-size:.96rem
+}
+.beta b{font-family:var(--speels)}
+
+/* ---------- knoppen ---------- */
+.knop{
+  display:inline-block;border:none;border-radius:16px;padding:15px 28px;
+  font-family:var(--speels);font-size:1.2rem;color:#fff;background:var(--groen);
+  text-decoration:none;cursor:pointer;box-shadow:0 5px 0 #1b6b30;transition:transform .06s
+}
+.knop:active{transform:translateY(3px);box-shadow:0 2px 0 #1b6b30}
+.knop.oranje{background:var(--oranje);box-shadow:0 5px 0 #b3641a}
+.knop.klein{font-size:1rem;padding:10px 18px}
+
+/* ---------- hero ---------- */
+.hero{text-align:center}
+.hero .tijgergroot{max-width:150px;margin:0 auto 6px}
+.hero .onder{color:#4b5d53;font-size:.95rem;margin-top:12px}
+
+/* ---------- roosters ---------- */
+.drie{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.vak{background:#f4faf1;border:3px solid #dcefe0;border-radius:16px;padding:18px}
+.vak .ic{font-size:2rem;display:block;margin-bottom:4px}
+.niveau{background:#f4faf1;border:3px solid #dcefe0;border-radius:16px;padding:18px;text-align:center}
+.niveau .ic{font-size:2.6rem;display:block}
+.niveau .lft{font-family:var(--speels);font-size:1.25rem;color:var(--donkergroen)}
+ul.vink{list-style:none;padding:0;margin:0}
+ul.vink li{padding-left:30px;position:relative;margin-bottom:9px}
+ul.vink li::before{content:"🌿";position:absolute;left:0}
+
+/* ---------- stappen ---------- */
+.stappen{counter-reset:stap;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+.stap{position:relative;padding-left:52px}
+.stap::before{
+  counter-increment:stap;content:counter(stap);
+  position:absolute;left:0;top:0;width:38px;height:38px;border-radius:50%;
+  background:var(--jungle);color:#fff;font-family:var(--speels);font-size:1.3rem;
+  display:flex;align-items:center;justify-content:center
+}
+
+/* ---------- formulier ---------- */
+label{display:block;font-weight:600;margin-bottom:6px}
+.veld{margin-bottom:18px}
+input[type=text],textarea,select{
+  font-family:inherit;font-size:1rem;padding:11px 13px;border:3px solid #dcefe0;
+  border-radius:12px;width:100%;background:#fff
+}
+textarea{min-height:110px;resize:vertical}
+.radios{display:flex;gap:10px;flex-wrap:wrap}
+.radios label{
+  background:#f4faf1;border:3px solid #dcefe0;border-radius:14px;padding:10px 15px;
+  cursor:pointer;font-weight:normal;margin:0;display:flex;align-items:center;gap:7px
+}
+.radios input{accent-color:var(--groen);width:18px;height:18px}
+.radios .gezicht{font-size:1.5rem;line-height:1}
+.verstopt{position:absolute!important;left:-9999px}
+
+/* ---------- voet ---------- */
+footer.sitevoet{color:#e8f5ec;text-align:center;padding:10px 0 40px;font-size:.9rem}
+footer.sitevoet a{color:#fff}
+
+/* ---------- kleine schermen ---------- */
+@media (max-width:600px){
+  .kaart{padding:20px}
+  .sitekop nav{width:100%;margin-left:0}
+}

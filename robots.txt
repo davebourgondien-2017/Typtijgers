@@ -1,0 +1,45 @@
+# Typtijgers - gratis typcursus voor kinderen
+# Alles mag geindexeerd worden. We willen juist gevonden worden, ook door AI-tools.
+
+User-agent: *
+Allow: /
+Disallow: /bedankt.html
+Disallow: /bedankt
+
+# De bots van AI-tools staan hier expliciet, zodat duidelijk is dat ze welkom zijn.
+# (Google-Extended en Applebot-Extended zijn afmeld-tokens: door ze toe te staan
+#  mag de inhoud ook in Gemini en Apple Intelligence gebruikt worden.)
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+Sitemap: https://www.typtijgers.nl/sitemap.xml

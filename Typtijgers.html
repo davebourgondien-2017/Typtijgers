@@ -1,0 +1,2681 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>De cursus - Typtijgers | leren typen in 45 lessen</title>
+<meta name="description" content="Start de gratis typcursus: 45 lessen in 5 modules op een Nederlands QWERTY-toetsenbord, met een toetsenbord op het scherm dat de volgende toets aanwijst.">
+<!-- De canonical wijst naar het nette adres; /Typtijgers.html en /cursus tonen hetzelfde. -->
+<link rel="canonical" href="https://www.typtijgers.nl/cursus">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#0f3d24">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Typtijgers">
+<meta property="og:locale" content="nl_NL">
+<meta property="og:url" content="https://www.typtijgers.nl/cursus">
+<meta property="og:title" content="De cursus - Typtijgers">
+<meta property="og:description" content="45 lessen in 5 modules op een Nederlands QWERTY-toetsenbord. Gratis, zonder account.">
+<meta property="og:image" content="https://www.typtijgers.nl/og-typtijgers.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<!-- Supabase: voor inloggen en online voortgang. Zonder internet laadt dit niet,
+     dan werkt de cursus gewoon zoals altijd, met voortgang op dit apparaat. -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<style>
+/* ============================== basis ============================== */
+:root{
+  /* junglepalet */
+  --jungle:#1f7a4d; --donkergroen:#0f3d24; --groen:#2f9e44; --blad:#74c476;
+  --geel:#fcc419; --oranje:#e8590c; --tijger:#e8862a;
+  --roze:#e64980; --paars:#7048e8; --rood:#e03131; --grijs:#7c8a80;
+  --inkt:#1d2b22; --papier:#fffdf6;
+  --f-pink:#f06595; --f-ring:#ff922b; --f-midden:#fcc419; --f-wijs:#51cf66; --f-duim:#adb5bd;
+  --ku: clamp(1.55rem, 3.5vw, 2.6rem);
+  --rad:18px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family:"Comic Sans MS","Trebuchet MS",Verdana,sans-serif;
+  color:var(--inkt);
+  background:#0d3b23;
+  background-image:radial-gradient(1200px 600px at 15% -10%, #2b7a4b 0%, rgba(43,122,75,0) 60%),
+                   radial-gradient(900px 500px at 90% 10%, #1e6b41 0%, rgba(30,107,65,0) 55%),
+                   linear-gradient(170deg,#124a2b 0%,#0b3520 55%,#0a2c1b 100%);
+  min-height:100vh;
+  -webkit-text-size-adjust:100%;
+}
+/* laag met palmbladeren achter alles */
+#jungle{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.wrap{max-width:1000px;margin:0 auto;padding:14px 14px 40px;position:relative;z-index:1}
+h1,h2,h3{margin:0 0 .4em}
+h1{font-size:clamp(1.6rem,4.5vw,2.4rem)}
+button{font-family:inherit}
+
+/* ============================== koptekst ============================== */
+header{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.logo{font-size:clamp(1.3rem,4vw,2rem);font-weight:bold;color:#ffe9a8;display:flex;align-items:center;gap:10px;
+      text-shadow:0 2px 6px rgba(0,0,0,.45)}
+.logo .kop{width:clamp(38px,7vw,58px);flex:none;display:block}
+.tijger{width:100%;height:auto;display:block;filter:drop-shadow(0 2px 4px rgba(0,0,0,.35))}
+header .rechts{margin-left:auto;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.chip{
+  background:var(--papier);border:3px solid #fff;border-radius:999px;
+  padding:6px 14px;display:flex;align-items:center;gap:8px;cursor:pointer;
+  box-shadow:0 3px 0 rgba(0,0,0,.12);font-size:.95rem
+}
+.chip .bol{width:20px;height:20px;border-radius:50%;display:inline-block}
+button.chip{font-family:inherit;color:var(--inkt)}
+.chip.online{border-color:#b2f2bb}
+input[type=email]{
+  font-family:inherit;font-size:1.05rem;padding:10px 14px;border:3px solid #dee2e6;
+  border-radius:12px;width:100%;max-width:340px
+}
+.vinkje{display:flex;gap:8px;align-items:flex-start;justify-content:center;font-size:.92rem;margin:10px 0}
+.vinkje input{width:20px;height:20px;flex:none;margin-top:2px}
+.opslagregel{font-size:.9rem}
+.knop{
+  border:none;border-radius:14px;padding:12px 20px;font-size:1.05rem;font-weight:bold;
+  color:#fff;background:var(--jungle);cursor:pointer;box-shadow:0 5px 0 rgba(0,0,0,.25);
+  transition:transform .06s
+}
+.knop:active{transform:translateY(3px);box-shadow:0 2px 0 rgba(0,0,0,.25)}
+.knop.groen{background:var(--groen)} .knop.oranje{background:var(--oranje)}
+.knop.grijs{background:#6b7d70} .knop.paars{background:#8a5a2b}
+.knop.klein{padding:8px 14px;font-size:.9rem;border-radius:11px}
+
+/* ============================== kaarten ============================== */
+.kaart{background:var(--papier);border-radius:var(--rad);padding:18px;margin-bottom:16px;
+       border:3px solid #b7dcc2;box-shadow:0 8px 22px rgba(0,0,0,.28)}
+.kaart h2,.kaart h3{color:var(--donkergroen)}
+.screen{display:none}
+.screen.aan{display:block}
+
+/* ============================== profielen ============================== */
+.prof-grid{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
+.prof{
+  width:150px;background:var(--papier);border:4px solid transparent;border-radius:var(--rad);
+  padding:14px;text-align:center;cursor:pointer;box-shadow:0 6px 14px rgba(0,0,0,.10)
+}
+.prof:hover{border-color:var(--geel)}
+.prof .avatar{width:64px;height:64px;border-radius:50%;margin:0 auto 8px;display:flex;align-items:center;justify-content:center;font-size:2rem;color:#fff}
+.prof .naam{font-weight:bold;font-size:1.05rem;word-break:break-word}
+.prof .sub{font-size:.8rem;color:var(--grijs)}
+.prof.nieuw{border:4px dashed #adb5bd;background:rgba(255,255,255,.6)}
+.kleurkiezer{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:10px 0}
+.kleurkiezer div{width:34px;height:34px;border-radius:50%;cursor:pointer;border:4px solid transparent}
+.kleurkiezer div.uit{border-color:var(--inkt)}
+input[type=text]{
+  font-family:inherit;font-size:1.1rem;padding:10px 14px;border:3px solid #dee2e6;
+  border-radius:12px;width:100%;max-width:280px
+}
+.modus-kies{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:10px 0}
+.modus-kies label{
+  background:#f1f3f5;border:3px solid transparent;border-radius:14px;padding:10px 16px;cursor:pointer;font-size:.95rem;
+  flex:1 1 190px;max-width:250px;text-align:center   /* even breed, ook bij verschillende teksten */
+}
+.modus-kies label.uit{border-color:var(--jungle);background:#e6f6ec}
+.modus-kies label b{display:block;font-size:1.05rem}
+.modus-kies label .ic{font-size:1.5rem}
+.modus-kies input{display:none}
+
+/* ============================== menu ============================== */
+.les-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.les{
+  background:#f8f9fa;border:3px solid #e9ecef;border-radius:16px;padding:12px;cursor:pointer;
+  text-align:left;position:relative
+}
+.les:hover{border-color:var(--jungle)}
+.les.klaar{background:#e9f7ec;border-color:#7cc99a}
+.les.op-slot{opacity:.5;cursor:not-allowed;background:#f1f3f5}
+.les .nr{font-size:.78rem;color:var(--grijs);font-weight:bold}
+.les .tt{font-weight:bold;font-size:.98rem;margin:2px 0 6px;line-height:1.2}
+.les .toetsen{font-family:Consolas,monospace;font-size:.85rem;color:#495057;letter-spacing:2px}
+.sterren{font-size:1.05rem;letter-spacing:2px;margin-top:6px}
+.slotje{position:absolute;top:8px;right:10px;font-size:1.1rem}
+.badges{display:flex;gap:10px;flex-wrap:wrap}
+.badge{
+  background:#f8f9fa;border:3px solid #e9ecef;border-radius:14px;padding:8px 12px;
+  text-align:center;width:120px;font-size:.78rem;opacity:.45
+}
+.badge.gehaald{opacity:1;background:#fff9db;border-color:var(--geel)}
+.badge .ic{font-size:1.6rem;display:block}
+.tip{background:#e6f6ec;border-left:8px solid var(--jungle);border-radius:12px;padding:12px 16px;font-size:.95rem;line-height:1.5}
+/* modulekoppen in het menu */
+.modkop{display:flex;align-items:center;gap:12px;margin:20px 0 10px;padding:10px 14px;border-radius:14px;
+        background:linear-gradient(100deg,var(--donkergroen),#1c6b3f);color:#fff}
+.modkop .ic{font-size:1.7rem}
+.modkop .tt{font-weight:bold;font-size:1.15rem;line-height:1.2}
+.modkop .sub{font-size:.82rem;opacity:.9}
+.modkop .telling{margin-left:auto;font-size:.85rem;background:rgba(255,255,255,.18);padding:4px 12px;border-radius:999px;white-space:nowrap}
+.modslot{background:#f1f3f0;border:3px dashed #b7c7bc;border-radius:14px;padding:14px;font-size:.95rem;color:#4a5a50}
+
+/* ============================== les ============================== */
+.balk{height:16px;background:#e9ecef;border-radius:999px;overflow:hidden;margin:10px 0 4px}
+.balk i{display:block;height:100%;background:linear-gradient(90deg,var(--groen),#69db7c);width:0;transition:width .2s}
+.meters{display:flex;gap:16px;flex-wrap:wrap;font-size:.9rem;color:#495057}
+.meters b{font-size:1.15rem;color:var(--inkt)}
+.opdracht{
+  font-family:Consolas,"Courier New",monospace;
+  font-size:clamp(1.5rem,5.2vw,2.6rem);
+  line-height:1.7;letter-spacing:2px;text-align:center;
+  padding:18px 10px;background:#f2f9f3;border:2px solid #d9ecdf;border-radius:16px;margin:8px 0;
+  word-break:break-word;min-height:3.4em;display:flex;align-items:center;justify-content:center;flex-wrap:wrap
+}
+.opdracht.jong{font-size:clamp(2rem,8vw,3.6rem)}
+.opdracht .ch{padding:0 1px;border-radius:6px}
+.opdracht .ch.goed{color:#2b8a3e}
+.opdracht .ch.nu{background:var(--geel);box-shadow:0 0 0 4px #fff3bf;animation:tik 1s infinite}
+.opdracht .ch.fout{background:var(--rood);color:#fff}
+.opdracht .ch.sp{color:#adb5bd}
+.opdracht .ch.sp.goed{color:#8ce99a}
+@keyframes tik{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.schud{animation:schud .25s}
+@keyframes schud{0%,100%{transform:translateX(0)}25%{transform:translateX(-9px)}75%{transform:translateX(9px)}}
+.hint{text-align:center;font-size:1rem;min-height:1.6em;margin:2px 0 8px}
+.hint b{padding:2px 10px;border-radius:999px;color:#212529}
+
+/* ============================== toetsenbord ============================== */
+.kb{display:flex;flex-direction:column;gap:5px;align-items:center;margin:6px 0 2px;overflow-x:auto;padding-bottom:4px}
+.kb-rij{display:flex;gap:5px}
+.kb-toets{
+  height:var(--ku);width:var(--ku);border-radius:8px;background:#f1f3f5;border-bottom:4px solid #dee2e6;
+  display:flex;align-items:center;justify-content:center;
+  font-size:clamp(.6rem,1.5vw,.85rem);font-family:Verdana,sans-serif;color:#495057;
+  position:relative;flex:none
+}
+.kb-toets.breed{font-size:clamp(.5rem,1.1vw,.7rem)}
+.kb-toets.vinger{color:#212529}
+.kb-toets.thuis::after{content:"";position:absolute;bottom:3px;width:40%;height:3px;border-radius:2px;background:rgba(0,0,0,.35)}
+/* De volgende toets licht op met een rand, NIET met een andere kleur:
+   de vingerkleur van de toets moet altijd overeenkomen met de vinger op de tekening. */
+.kb-toets.volgende{
+  color:#1d2b22;font-weight:bold;z-index:3;
+  box-shadow:0 0 0 3px #1d2b22, 0 0 0 6px rgba(255,255,255,.95), 0 6px 10px rgba(0,0,0,.35);
+  animation:kbwip .85s ease-in-out infinite
+}
+@keyframes kbwip{
+  0%,100%{transform:translateY(-3px) scale(1.04)}
+  50%{transform:translateY(-7px) scale(1.09)}
+}
+.kb-toets.shifttoets{
+  color:#1d2b22;font-weight:bold;z-index:2;
+  box-shadow:0 0 0 3px #1d2b22, 0 0 0 6px rgba(255,255,255,.7)
+}
+.legenda{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;font-size:.78rem;color:#495057;margin-top:6px}
+.legenda span i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:4px;vertical-align:-1px}
+
+/* ============================== handen ============================== */
+.handen{margin:4px auto;max-width:620px}
+.handen-svg{width:100%;height:auto;display:block}
+.handen-svg .vg{fill-opacity:.28;stroke:#c98a4b;stroke-width:2.5;transition:fill-opacity .15s}
+.handen-svg .vg.klikbaar{cursor:pointer}
+.handen-svg .vg.klikbaar:hover{fill-opacity:.62}
+.handen-svg .vg.aan{fill-opacity:1;stroke:#212529;stroke-width:4}
+.handen-svg .vg.goed{fill:#37b24d;fill-opacity:1;stroke:#2b8a3e}
+.handen-svg .vg.mis{fill:#e03131;fill-opacity:1;stroke:#a51111}
+.handen-svg text{font-family:Verdana,sans-serif;fill:#495057}
+.vpaneel{display:flex;gap:14px;align-items:center;background:#fff9db;border:3px solid var(--geel);border-radius:16px;padding:10px 14px;margin:8px 0}
+.vpaneel .handen{flex:1 1 280px;max-width:420px;min-width:180px;margin:0}
+.vpaneel .vnaam{flex:1 1 150px;font-size:clamp(1.1rem,3.6vw,1.7rem);font-weight:bold;line-height:1.2}
+.vpaneel .vnaam small{display:block;font-size:.62em;font-weight:normal;color:#5f6b7a;margin-top:6px;line-height:1.4}
+.vraag{font-size:clamp(1.1rem,3.8vw,1.7rem);text-align:center;font-weight:bold;margin:10px 0 2px}
+.vraag em{font-style:normal;background:var(--geel);border-radius:8px;padding:2px 9px}
+.melding{text-align:center;font-size:1.02rem;min-height:1.9em;margin:2px 0}
+
+/* ============================== resultaat ============================== */
+.resultaat{text-align:center}
+.grote-sterren{font-size:clamp(2.6rem,11vw,4.6rem);letter-spacing:6px;margin:6px 0}
+.cijfers{display:flex;gap:22px;justify-content:center;flex-wrap:wrap;margin:14px 0}
+.cijfers div{background:#f8f9fa;border-radius:14px;padding:12px 20px;min-width:110px}
+.cijfers b{display:block;font-size:1.7rem}
+.cijfers small{color:var(--grijs)}
+#confetti{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:99}
+.snip{position:absolute;width:11px;height:11px;border-radius:2px;animation:val linear forwards}
+@keyframes val{from{transform:translateY(-30px) rotate(0)}to{transform:translateY(105vh) rotate(720deg)}}
+
+/* ============================== spel ============================== */
+.arena{
+  position:relative;height:min(58vh,420px);background:linear-gradient(180deg,#dff2e4,#fffdf6);
+  border-radius:16px;overflow:hidden;border:4px solid #7cc99a
+}
+.valletter{
+  position:absolute;font-family:Consolas,monospace;font-weight:bold;
+  font-size:clamp(1.6rem,5vw,2.4rem);background:#fff;border-radius:12px;padding:2px 10px;
+  box-shadow:0 3px 8px rgba(0,0,0,.15);color:#1864ab
+}
+.harten{font-size:1.4rem;letter-spacing:3px}
+.rij{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.rij.mid{justify-content:center}
+.stil{color:var(--grijs);font-size:.88rem}
+
+/* ============================== beta-strook en feedback ============================== */
+.betabalk{
+  background:#fff8e1;border:3px solid #ffd54f;border-radius:14px;padding:9px 14px;margin-bottom:14px;
+  font-size:.9rem;display:flex;gap:10px;align-items:center;flex-wrap:wrap
+}
+.betabalk a,.linkknop{color:#0f3d24;font-weight:bold;text-decoration:underline;cursor:pointer;background:none;border:none;font-size:inherit;font-family:inherit;padding:0}
+.modal{position:fixed;inset:0;background:rgba(15,61,36,.62);display:none;align-items:center;justify-content:center;padding:14px;z-index:60}
+.modal.aan{display:flex}
+.modal .doos{background:#fff;border-radius:20px;max-width:540px;width:100%;padding:22px;max-height:92vh;overflow:auto;box-shadow:0 20px 50px rgba(0,0,0,.45)}
+.modal h2{margin-top:0}
+.vraagblok{margin:14px 0}
+.vraagblok>label{display:block;font-weight:bold;margin-bottom:6px;font-size:.98rem}
+.smiley-rij,.keuze-rij{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.smiley{font-size:1.8rem;background:#f1f3f5;border:3px solid transparent;border-radius:14px;padding:5px 10px;cursor:pointer;line-height:1.1}
+.smiley.uit{border-color:var(--jungle);background:#e6f6ec}
+.keuze{background:#f1f3f5;border:3px solid transparent;border-radius:12px;padding:8px 13px;cursor:pointer;font-size:.9rem}
+.keuze.uit{border-color:var(--jungle);background:#e6f6ec}
+textarea{font-family:inherit;font-size:1rem;padding:10px 12px;border:3px solid #dee2e6;border-radius:12px;width:100%;min-height:78px;resize:vertical}
+.codevak{font-family:Consolas,monospace;font-size:.78rem;word-break:break-all;background:#f1f3f5;border-radius:10px;padding:10px;max-height:110px;overflow:auto;text-align:left}
+.prof .wis{position:absolute;top:4px;right:8px;color:#adb5bd;cursor:pointer;font-size:1rem;line-height:1}
+.prof .wis:hover{color:var(--rood)}
+.prof{position:relative}
+form[hidden]{display:none}
+
+/* ============================== het junglepad ============================== */
+.pad{position:relative;padding:4px 0 2px}
+.pad::before{content:"";position:absolute;left:40px;top:4px;bottom:4px;width:8px;border-radius:4px;
+  background:repeating-linear-gradient(180deg,#cbb994 0 14px,transparent 14px 28px);z-index:0}
+.stap{position:relative;display:flex;align-items:center;gap:12px;margin:0 0 12px;z-index:1}
+.stap .bol{width:76px;height:76px;flex:none;border-radius:50%;background:#fff;border:5px solid #cbb994;
+  display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:1.2rem;color:#5a4a2a;
+  box-shadow:0 4px 0 rgba(0,0,0,.16);cursor:pointer;transition:transform .1s}
+.stap .bol:active{transform:translateY(3px)}
+.stap:nth-child(even) .bol{margin-left:20px}
+.stap .kaartje{background:#fff;border-radius:14px;padding:9px 13px;box-shadow:0 3px 10px rgba(0,0,0,.10);
+  flex:1;min-width:0;cursor:pointer;border:3px solid transparent}
+.stap .kaartje:hover{border-color:var(--jungle)}
+.stap .kaartje .tt{font-weight:bold;font-size:1rem;line-height:1.2}
+.stap .kaartje .sub{font-family:Consolas,monospace;font-size:.8rem;color:#5f6b7a}
+.stap .kaartje .sterren{font-size:1rem;letter-spacing:2px;margin-top:2px}
+.stap.klaar .bol{background:#e6f6ec;border-color:var(--groen);color:#1b6b2f}
+.stap.nu .bol{border-color:var(--geel);box-shadow:0 0 0 6px rgba(252,196,25,.35),0 4px 0 rgba(0,0,0,.16);
+  animation:stapklop 1.1s ease-in-out infinite}
+@keyframes stapklop{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
+.stap.nu .kaartje{border-color:var(--geel);background:#fffdf0}
+.stap.slot .bol,.stap.slot .kaartje{opacity:.5;cursor:not-allowed}
+.stap.slot .kaartje:hover{border-color:transparent}
+.stap.spel .bol{background:#f3e8ff;border-color:var(--paars);font-size:1.7rem}
+.stap.examen .bol{background:#fff3bf;border-color:var(--oranje);font-size:1.7rem}
+.hiernu{display:inline-block;background:var(--geel);color:#3d2f00;border-radius:999px;
+  padding:1px 9px;font-size:.72rem;font-weight:bold;margin-left:6px;vertical-align:2px}
+/* het modulebord heeft een donkere achtergrond, dus de verhaalregel moet licht zijn */
+.modkop .verhaal{font-size:.86rem;color:rgba(255,255,255,.92);font-style:italic;margin-top:3px;line-height:1.4}
+
+/* ============================== punten, rang, winkel ============================== */
+.puntbalk{display:flex;gap:10px;align-items:center;flex-wrap:wrap;background:#fffdf0;
+  border:3px solid var(--geel);border-radius:16px;padding:10px 14px;margin-bottom:14px}
+.puntbalk .pt{font-weight:bold;font-size:1.15rem;white-space:nowrap}
+.puntbalk .rang{background:#fff;border-radius:999px;padding:4px 12px;font-size:.9rem;font-weight:bold;white-space:nowrap}
+.rangbalk{flex:1 1 140px;min-width:110px;height:14px;background:#e9ecef;border-radius:999px;overflow:hidden}
+.rangbalk i{display:block;height:100%;background:linear-gradient(90deg,var(--oranje),var(--geel));width:0}
+.winkel-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px}
+.spul{background:#fff;border:3px solid #e9ecef;border-radius:16px;padding:12px;text-align:center}
+.spul .ic{font-size:2.2rem;display:block;line-height:1.2}
+.spul .naam{font-weight:bold;font-size:.95rem}
+.spul .prijs{font-size:.85rem;color:#5f6b7a;margin:4px 0 8px}
+.spul.bezit{border-color:var(--groen);background:#e6f6ec}
+.spul.tekort{opacity:.55}
+.avatar-groot{position:relative;width:150px;margin:0 auto}
+.avatar-groot .op{position:absolute;font-size:2.1rem;line-height:1}
+.op.hoofd{top:-12px;left:50%;transform:translateX(-50%)}
+.op.ogen{top:36%;left:50%;transform:translateX(-50%)}
+.op.nek{bottom:0;left:50%;transform:translateX(-50%)}
+.op.zij{top:32%;right:-10px}
+.prof .avatar{position:relative}
+.prof .avatar .op{position:absolute;font-size:1.05rem;line-height:1}
+
+/* ============================== combo ============================== */
+.combo{display:inline-flex;align-items:center;gap:6px;background:#fff3bf;border:3px solid var(--oranje);
+  border-radius:999px;padding:3px 12px;font-weight:bold;font-size:1rem;opacity:0;transform:scale(.8);
+  transition:opacity .15s, transform .15s}
+.combo.aan{opacity:1;transform:scale(1)}
+.combo.heet{background:#ffe3e3;border-color:var(--rood);animation:combovuur .5s ease-in-out infinite alternate}
+@keyframes combovuur{from{transform:scale(1)}to{transform:scale(1.08)}}
+
+/* ============================== diploma en rapport ============================== */
+.diploma{background:#fffdf5;border:10px double var(--oranje);border-radius:10px;padding:26px 20px;
+  text-align:center;max-width:660px;margin:0 auto}
+.diploma h2{font-size:clamp(1.5rem,5vw,2.2rem);color:#8a4b00;margin:0 0 4px}
+.diploma .naam{font-size:clamp(1.6rem,6vw,2.6rem);font-weight:bold;margin:12px 0;color:#14532d}
+.diploma .cijfers{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin:14px 0}
+.diploma .cijfers div{background:#fff;border-radius:12px;padding:8px 16px;min-width:90px}
+.rapport table{width:100%;border-collapse:collapse;font-size:.9rem}
+.rapport th,.rapport td{text-align:left;padding:5px 8px;border-bottom:1px solid #e9ecef}
+.rapport th{background:#f1f3f5}
+.rapport td.mid,.rapport th.mid{text-align:center}
+@media print{
+  body{background:#fff}
+  #jungle,header,.geenprint{display:none!important}
+  .kaart{box-shadow:none;border:none;padding:0}
+}
+</style>
+</head>
+<body>
+<svg id="jungle" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true"></svg>
+<div class="wrap">
+
+  <header>
+    <div class="logo"><span class="kop" id="logoTijger"></span> Typtijgers</div>
+    <div class="rechts">
+      <div class="chip" id="profChip" style="display:none"></div>
+      <div class="chip" id="geluidChip" style="display:none">🔊 Geluid aan</div>
+      <button class="chip" id="accountChip" style="display:none" title="Inloggen om je voortgang op elk apparaat te bewaren">👤 Inloggen</button>
+    </div>
+  </header>
+
+  <div class="betabalk">
+    🌱 <div>Dit is een <b>gloednieuwe cursus</b> die nog groeit. Alles is gratis.
+    Vertel ons wat beter kan - <button class="linkknop" id="feedbackKop">geef feedback</button>.</div>
+  </div>
+
+  <!-- ========== profielen ========== -->
+  <section class="screen aan" id="sc-profielen">
+    <div class="kaart" style="text-align:center">
+      <div id="grotetijger" style="max-width:140px;margin:0 auto 4px"></div>
+      <h1>Wie gaat er typen?</h1>
+      <p class="stil">Kies je naam, of maak een nieuw tijgertje aan.</p>
+      <div class="prof-grid" id="profGrid"></div>
+      <p class="stil opslagregel" style="margin-top:16px" id="opslagRegel">
+        Je voortgang wordt bewaard op dit apparaat, in deze browser.
+      </p>
+      <p class="stil" style="margin-top:4px">
+        <button class="linkknop" id="codeKnop">Voortgang meenemen met een code</button>
+      </p>
+    </div>
+  </section>
+
+  <!-- ========== nieuw profiel ========== -->
+  <section class="screen" id="sc-nieuw">
+    <div class="kaart" style="text-align:center">
+      <h2>Nieuw tijgertje</h2>
+      <p>Kies een bijnaam</p>
+      <input type="text" id="nieuwNaam" maxlength="14" placeholder="jouw bijnaam" autocomplete="off">
+      <p class="stil" style="font-size:.85rem;margin:6px 0 0">Een voornaam of een verzonnen naam. Geen achternaam.</p>
+      <p style="margin-top:18px">Kies je kleur</p>
+      <div class="kleurkiezer" id="kleurKiezer"></div>
+      <p style="margin-top:18px">Welk niveau?</p>
+      <div class="modus-kies" id="modusKiezer"></div>
+      <div class="rij mid" style="margin-top:14px">
+        <button class="knop grijs" data-ga="profielen">Terug</button>
+        <button class="knop groen" id="maakProfiel">Beginnen!</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== menu ========== -->
+  <section class="screen" id="sc-menu">
+    <div class="kaart">
+      <div class="rij" style="margin-bottom:10px">
+        <h2 style="margin:0" id="menuTitel">Jouw lessen</h2>
+        <div style="margin-left:auto" class="rij">
+          <button class="knop oranje klein" id="winkelKnop">🛒 Winkel</button>
+          <button class="knop paars klein" id="spelKnop">🎮 Vrij spelen</button>
+          <button class="knop groen klein" id="diplomaKnop" style="display:none">🎓 Diploma</button>
+          <button class="knop grijs klein" id="rapportKnop">📄 Rapport</button>
+          <button class="knop grijs klein" data-ga="profielen">Wissel speler</button>
+        </div>
+      </div>
+      <div class="puntbalk">
+        <span class="pt">🐾 <b id="puntSaldo">0</b> tijgerpunten</span>
+        <span class="rang" id="rangNaam">🐾 Welp</span>
+        <div class="rangbalk"><i id="rangBalk"></i></div>
+        <span class="stil" id="rangVolgend"></span>
+      </div>
+      <div class="tip" id="menuTip"></div>
+      <div id="modules"></div>
+    </div>
+    <div class="kaart">
+      <h3>Jouw medailles</h3>
+      <div class="badges" id="badgeLijst"></div>
+    </div>
+    <div class="kaart">
+      <h3>Zo heten je vingers</h3>
+      <p style="font-size:.95rem;line-height:1.6;margin:0 0 6px">
+        Links en rechts hebben dezelfde namen: <b>pink</b>, <b>ringvinger</b>, <b>middelvinger</b>, <b>wijsvinger</b> en <b>duim</b>.
+        Zeg er dus altijd links of rechts bij: je typt de <b>f</b> met je <b>linkerwijsvinger</b> en de <b>l</b> met je <b>rechterringvinger</b>.
+        Elke vinger heeft zijn eigen kleur - die kleur zie je ook op het toetsenbord terug.
+      </p>
+      <div class="handen" id="handenUitleg"></div>
+      <h3 style="margin-top:14px">Zo zet je je handen</h3>
+      <p style="font-size:.95rem;line-height:1.6;margin:0 0 10px">
+        Leg je linkerhand op <b>a s d f</b> en je rechterhand op <b>j k l ;</b>. Dat is de <b>thuisrij</b>.
+        De toetsen <b>f</b> en <b>j</b> hebben vaak een klein streepje - dat voel je met je wijsvingers.
+        Je duimen liggen op de spatiebalk. Na elke letter gaan je vingers weer terug naar huis.
+        Kijk naar het scherm, niet naar je handen!
+      </p>
+      <div class="kb" id="kbUitleg"></div>
+      <div class="legenda" id="legenda"></div>
+    </div>
+  </section>
+
+  <!-- ========== vingerles ========== -->
+  <section class="screen" id="sc-vingers">
+    <div class="kaart">
+      <div class="rij">
+        <div>
+          <div class="stil" id="vgNr"></div>
+          <h2 style="margin:0" id="vgTitel"></h2>
+        </div>
+        <button class="knop grijs klein" style="margin-left:auto" id="vgStop">Stoppen</button>
+      </div>
+      <div class="balk"><i id="vgBalk"></i></div>
+      <div class="meters">
+        <div>Vraag <b id="vgItem">1</b> / <span id="vgTotaal">1</span></div>
+        <div>Goed <b id="vgAcc">100%</b></div>
+        <div>Foutjes <b id="vgFout">0</b></div>
+      </div>
+      <div class="vraag" id="vgVraag"></div>
+      <div class="handen" id="vgHanden"></div>
+      <div class="melding" id="vgMelding"></div>
+      <p class="stil" style="text-align:center;margin:2px 0 0">Zelfde kleur = zelfde vinger. Kijk op het toetsenbord welke kleur de toets heeft.</p>
+      <div class="kb" id="kbVingers"></div>
+    </div>
+  </section>
+
+  <!-- ========== les ========== -->
+  <section class="screen" id="sc-les">
+    <div class="kaart">
+      <div class="rij">
+        <div>
+          <div class="stil" id="lesNr"></div>
+          <h2 style="margin:0" id="lesTitel"></h2>
+        </div>
+        <button class="knop grijs klein" style="margin-left:auto" id="stopLes">Stoppen</button>
+      </div>
+      <div class="balk"><i id="lesBalk"></i></div>
+      <div class="meters">
+        <div>Woordje <b id="mItem">1</b> / <span id="mTotaal">1</span></div>
+        <div>Goed <b id="mAcc">100%</b></div>
+        <div id="wpmVak" style="display:none">Snelheid <b id="mWpm">0</b> wpm</div>
+        <div id="doelVak" style="display:none">Doel <b id="mDoel">0</b> wpm</div>
+        <div>Foutjes <b id="mFout">0</b></div>
+        <div style="margin-left:auto"><span class="combo" id="comboChip">🔥 <b id="comboN">0</b> op een rij</span></div>
+      </div>
+      <div class="opdracht" id="opdracht"></div>
+      <div class="hint" id="hint"></div>
+      <div class="vpaneel" id="vpaneel" style="display:none">
+        <div class="handen" id="lesHanden"></div>
+        <div class="vnaam" id="lesVnaam"></div>
+      </div>
+      <div class="kb" id="kbLes"></div>
+      <div class="legenda" id="legenda2"></div>
+    </div>
+  </section>
+
+  <!-- ========== resultaat ========== -->
+  <section class="screen" id="sc-resultaat">
+    <div class="kaart resultaat">
+      <h1 id="resKop">Goed gedaan!</h1>
+      <div class="grote-sterren" id="resSterren"></div>
+      <div class="cijfers">
+        <div><b id="resAcc"></b><small id="resAccLabel">goed getypt</small></div>
+        <div><b id="resTijd"></b><small id="resTijdLabel">tijd</small></div>
+        <div id="resWpmVak"><b id="resWpm"></b><small>woorden/min</small></div>
+      </div>
+      <p id="resPunten" style="font-size:1.15rem;font-weight:bold;margin:6px 0"></p>
+      <p id="resTekst" style="font-size:1.05rem"></p>
+      <div id="resNieuweBadges"></div>
+      <div class="rij mid" style="margin-top:16px">
+        <button class="knop grijs" data-ga="menu">Naar het menu</button>
+        <button class="knop oranje" id="resOpnieuw">Nog een keer</button>
+        <button class="knop groen" id="resVolgende">Volgende →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== winkel ========== -->
+  <section class="screen" id="sc-winkel">
+    <div class="kaart">
+      <div class="rij">
+        <h2 style="margin:0">🛒 De junglewinkel</h2>
+        <button class="knop grijs klein" style="margin-left:auto" data-ga="menu">Terug</button>
+      </div>
+      <p class="stil">Punten verdien je met lessen: meer sterren en langere combo s leveren meer op.</p>
+      <div class="rij mid" style="gap:24px;align-items:flex-start;margin:10px 0 14px">
+        <div>
+          <div class="avatar-groot" id="winkelTijger"></div>
+          <p style="text-align:center;font-weight:bold;margin:6px 0 0" id="winkelNaam"></p>
+        </div>
+        <div style="min-width:150px">
+          <p style="margin:0">Je hebt</p>
+          <p style="font-size:1.8rem;font-weight:bold;margin:2px 0"><span id="winkelSaldo">0</span> 🐾</p>
+          <p class="stil" style="margin:0">punten om te besteden</p>
+        </div>
+      </div>
+      <div class="winkel-grid" id="winkelGrid"></div>
+      <p class="stil" style="margin-top:12px">Klik op iets dat je al hebt om het aan of uit te doen.</p>
+    </div>
+  </section>
+
+  <!-- ========== diploma ========== -->
+  <section class="screen" id="sc-diploma">
+    <div class="kaart">
+      <div class="diploma" id="diplomaBlad"></div>
+      <div class="rij mid geenprint" style="margin-top:16px">
+        <button class="knop grijs" data-ga="menu">Naar het menu</button>
+        <button class="knop groen" id="diplomaPrint">🖨️ Printen</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== ouderrapport ========== -->
+  <section class="screen" id="sc-rapport">
+    <div class="kaart rapport">
+      <div class="rij geenprint">
+        <h2 style="margin:0">Rapport</h2>
+        <button class="knop grijs klein" style="margin-left:auto" data-ga="menu">Terug</button>
+        <button class="knop groen klein" id="rapportPrint">🖨️ Printen</button>
+      </div>
+      <div id="rapportInhoud"></div>
+    </div>
+  </section>
+
+  <!-- ========== spel ========== -->
+  <section class="screen" id="sc-spel">
+    <div class="kaart">
+      <div class="rij">
+        <h2 style="margin:0" id="spelTitel">🎮 Letterregen</h2>
+        <div class="harten" id="spelLevens" style="margin-left:auto"></div>
+        <div>Punten <b id="spelScore">0</b></div>
+        <div id="spelDoelVak" style="display:none">Doel <b id="spelDoel">0</b></div>
+        <div class="stil">Record <b id="spelRecord">0</b></div>
+        <button class="knop grijs klein" id="spelStop">Stoppen</button>
+      </div>
+      <p class="stil" id="spelUitleg" style="margin:8px 0">Typ de letter voordat hij de bodem raakt. Je hebt 3 levens!</p>
+      <div class="arena" id="arena"></div>
+      <div class="rij mid" style="margin-top:12px" id="spelStartRij">
+        <button class="knop groen" id="spelStart">Start!</button>
+      </div>
+    </div>
+  </section>
+
+  <footer class="stil" style="text-align:center;margin-top:10px">
+    Typtijgers is gratis en in ontwikkeling &middot; <a href="index.html">over deze site</a> &middot;
+    <a href="privacy.html">privacy</a> &middot; <button class="linkknop" id="feedbackVoet">geef feedback</button>
+  </footer>
+
+</div>
+<div id="confetti"></div>
+
+<!-- ========== feedbackvenster ========== -->
+<div class="modal" id="fbModal">
+  <div class="doos">
+    <h2 id="fbKop">Wat vond je ervan?</h2>
+    <p class="stil" id="fbIntro">Drie korte vragen. Zo maken we de cursus beter. Je hoeft geen naam of e-mailadres in te vullen.</p>
+
+    <div class="vraagblok">
+      <label>1. Hoe leuk was het?</label>
+      <div class="smiley-rij" id="fbLeuk">
+        <div class="smiley" data-w="1" title="niet leuk">😞</div>
+        <div class="smiley" data-w="2" title="een beetje">😐</div>
+        <div class="smiley" data-w="3" title="wel oke">🙂</div>
+        <div class="smiley" data-w="4" title="leuk">😃</div>
+        <div class="smiley" data-w="5" title="heel leuk">🤩</div>
+      </div>
+    </div>
+
+    <div class="vraagblok">
+      <label>2. Hoe moeilijk was het?</label>
+      <div class="keuze-rij" id="fbMoeilijk">
+        <div class="keuze" data-w="te makkelijk">Te makkelijk</div>
+        <div class="keuze" data-w="precies goed">Precies goed</div>
+        <div class="keuze" data-w="te moeilijk">Te moeilijk</div>
+      </div>
+    </div>
+
+    <div class="vraagblok">
+      <label>3. Wie vult dit in?</label>
+      <div class="keuze-rij" id="fbWie">
+        <div class="keuze" data-w="kind">Een kind</div>
+        <div class="keuze" data-w="ouder">Een ouder</div>
+        <div class="keuze" data-w="juf of meester">Juf of meester</div>
+      </div>
+    </div>
+
+    <div class="vraagblok">
+      <label for="fbTekst">Wat kunnen we beter doen? (mag je leeg laten)</label>
+      <textarea id="fbTekst" maxlength="600" placeholder="Bijvoorbeeld: de lessen met cijfers waren te lang."></textarea>
+      <p class="stil" style="margin:6px 0 0">Schrijf hier geen naam, adres of telefoonnummer.</p>
+    </div>
+
+    <div id="fbMelding" class="stil" style="min-height:1.4em;text-align:center"></div>
+    <div class="rij mid" style="margin-top:10px">
+      <button class="knop grijs" id="fbLater">Nu niet</button>
+      <button class="knop groen" id="fbVerstuur">Versturen</button>
+    </div>
+  </div>
+</div>
+
+<!-- ========== voortgangscode ========== -->
+<div class="modal" id="codeModal">
+  <div class="doos">
+    <h2>Voortgang meenemen</h2>
+    <p class="stil">Je voortgang staat op dit apparaat. Met deze code neem je hem mee naar een andere computer of browser.</p>
+    <div class="vraagblok">
+      <label>Jouw code (kopieer hem en bewaar hem)</label>
+      <div class="codevak" id="codeUit"></div>
+      <div class="rij mid" style="margin-top:8px"><button class="knop klein" id="codeKopieer">Kopieer code</button></div>
+    </div>
+    <div class="vraagblok">
+      <label for="codeIn">Code van een ander apparaat plakken</label>
+      <textarea id="codeIn" placeholder="plak hier je code"></textarea>
+      <div class="rij mid" style="margin-top:8px"><button class="knop groen klein" id="codeLees">Voortgang inlezen</button></div>
+    </div>
+    <div id="codeMelding" class="stil" style="min-height:1.4em;text-align:center"></div>
+    <div class="rij mid" style="margin-top:6px"><button class="knop grijs" id="codeSluit">Sluiten</button></div>
+  </div>
+</div>
+
+<!-- ========== account (voor ouders) ========== -->
+<div class="modal" id="accountModal">
+  <div class="doos" style="text-align:center">
+
+    <!-- stap A: e-mailadres invullen -->
+    <div id="accStapMail">
+      <h2>Voortgang online bewaren</h2>
+      <p class="stil">Voor ouders en verzorgers. Met een gratis account kun je op elke computer verder
+        waar je gebleven was. Geen wachtwoord: je krijgt een inloglink per e-mail.</p>
+      <input type="email" id="accMail" placeholder="e-mailadres van de ouder" autocomplete="email" maxlength="120">
+      <label class="vinkje"><input type="checkbox" id="accOuder">
+        <span>Ik ben ouder of verzorger en ga akkoord met de <a href="/privacy" target="_blank" rel="noopener">privacyverklaring</a>.</span></label>
+      <p class="stil" style="font-size:.85rem">We bewaren alleen je e-mailadres, de bijnamen en de voortgang. Verder niets.</p>
+      <div class="rij mid" style="margin-top:8px">
+        <button class="knop grijs" data-acc-sluit>Annuleren</button>
+        <button class="knop groen" id="accStuur">Stuur inloglink</button>
+      </div>
+    </div>
+
+    <!-- stap B: mail is verstuurd -->
+    <div id="accStapCode" style="display:none">
+      <h2>Kijk in je mail 📬</h2>
+      <p>We hebben een mail gestuurd naar <b id="accMailTerug"></b>.<br>Klik op de link in die mail.</p>
+      <p class="stil" style="font-size:.9rem">Lees je de mail op een ander apparaat, zoals je telefoon?
+        Typ dan hier de code uit de mail:</p>
+      <input type="text" id="accCode" inputmode="numeric" autocomplete="one-time-code" maxlength="10" placeholder="code uit de mail" style="text-align:center;letter-spacing:3px">
+      <div class="rij mid" style="margin-top:10px">
+        <button class="knop grijs" id="accOpnieuw">Ander e-mailadres</button>
+        <button class="knop groen" id="accCodeKnop">Inloggen</button>
+      </div>
+      <p class="stil" style="font-size:.82rem">Geen mail gekregen? Kijk ook in de map Ongewenst of Spam.</p>
+    </div>
+
+    <!-- stap C: ingelogd -->
+    <div id="accStapIn" style="display:none">
+      <h2>Je bent ingelogd ☁️</h2>
+      <p>Account: <b id="accWie"></b></p>
+      <p class="stil" id="accStatus">De voortgang van alle spelers wordt online bewaard.</p>
+      <div class="rij mid" style="margin-top:10px">
+        <button class="knop grijs" data-acc-sluit>Sluiten</button>
+        <button class="knop oranje" id="accUit">Uitloggen</button>
+      </div>
+      <p style="margin-top:18px"><button class="linkknop" id="accWeg" style="color:#c92a2a">Account en alle online voortgang verwijderen</button></p>
+    </div>
+
+    <div id="accMelding" class="stil" style="min-height:1.4em;margin-top:8px"></div>
+  </div>
+</div>
+
+<!-- Netlify leest dit formulier bij het publiceren, zodat het echte formulier hierboven
+     via JavaScript verstuurd kan worden. Bezoekers zien dit niet. -->
+<form name="feedback-cursus" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input type="text" name="module">
+  <input type="text" name="niveau">
+  <input type="text" name="leuk">
+  <input type="text" name="moeilijk">
+  <input type="text" name="wie">
+  <textarea name="opmerking"></textarea>
+  <input type="text" name="voortgang">
+  <input type="text" name="versie">
+  <input type="text" name="bot-field">
+</form>
+
+<script>
+(function(){
+"use strict";
+
+/* ================================================================
+   1. Lesinhoud - alle woorden gebruiken alleen letters die in
+      die les of eerder zijn geleerd.
+   ================================================================ */
+// mod = het modulenummer (0 = tussenspel). jong/oud/stoer = de drie niveaus.
+var LESSEN = [
+ /* ---------- module 1: Beginner ---------- */
+ {mod:1, t:"Ken je vingers", type:"vingers", nieuw:[], label:"je 10 vingers"},
+
+ {mod:1, t:"Thuisrij: f en j", nieuw:["f","j"],
+  jong:["f","j","ff","jj","fj","jf","fjf","jfj","ff jj","fj jf"],
+  oud:["ff jj ff jj","fj fj jf jf","fjf jfj fjf","jj ff jj ff","fjfj jfjf","ff jj fj jf"],
+  stoer:["ffjj ffjj ffjj","fjfj jfjf fjfj","fjf jfj fjf jfj","jjff jjff jjff","fj jf fj jf fj jf","ffj jjf ffj jjf"]},
+
+ {mod:1, t:"Thuisrij: d en k", nieuw:["d","k"],
+  jong:["d","k","dd","kk","dk","kd","fd","jk","dkd","kdk"],
+  oud:["dd kk dd kk","dk dk kd kd","fd jk fd jk","dkd kdk dkd","jkfd jkfd","fdjk kjdf"],
+  stoer:["dkdk kdkd dkdk","fdjk fdjk fdjk","jkfd jkfd jkfd","dkfj kdjf dkfj","ddkk ffjj ddkk","kjfd dkfj kjfd"]},
+
+ {mod:1, t:"Thuisrij: s en l", nieuw:["s","l"],
+  jong:["s","l","ss","ll","sl","ls","sd","lk","sls","lsl"],
+  oud:["ss ll ss ll","sl sl ls ls","sdf lkj sdf","ssl lls ssl","fdsl jkls","sdfj klsd"],
+  stoer:["sdfj klsd sdfj","fdsl jkls fdsl","slsl lsls slsl","dksl lskd dksl","ssll ddkk ffjj","lkjs fdsl lkjs"]},
+
+ {mod:1, t:"Thuisrij compleet", nieuw:["a",";"],
+  jong:["a","als","las","sla","jas","dak","kaas","laf","dal","kalf"],
+  oud:["asdf jkl;","aa ;; aa ;;","als las sla","jas dak kaas","laf dal kalf","kaas als dak","asdf jkl; asdf"],
+  stoer:["asdf jkl; asdf jkl;","aa ss dd ff jj kk ll ;;","als las sla dal kalf","kaas jas dak das laf","kaas kalf kaas kalf","sla das als kaas laf"]},
+
+ {mod:1, t:"De letters g en h", nieuw:["g","h"],
+  jong:["dag","lag","hal","half","haas","gaas","gas","haha","gaga","hak"],
+  oud:["gg hh gg hh","dag lag half","haas gaas gala","haha gaga haha","laag hals hak","half glas kaas"],
+  stoer:["dag lag half haas gaas","gala galg hals hak laag","haha gaga haha gaga","ghgh hghg ghgh hghg","half glas kaas dag hal","gaas hals galg glas haas"]},
+
+ {mod:1, t:"Bovenrij: e i r u", nieuw:["e","i","r","u"],
+  jong:["die","hier","dier","deur","huis","uur","juf","duif","hihihi","kukeleku"],
+  oud:["ee ii rr uu","die hier dier","deur huis uur","reis jurk kerk","hihihi kukeleku","geluid sleuf regel","de juf is hier"],
+  stoer:["die hier dier deur huis","reis jurk kerk duif huid","geluid sleuf regel adres","kukeleku hihihi kukeleku","de juf is hier","ee ii rr uu ee ii rr uu"]},
+
+ {mod:1, t:"Bovenrij: t y o p q w", nieuw:["t","y","o","p","q","w"],
+  jong:["top","pop","stoel","water","paard","trap","groot","typ","typtijger","kwak kwak"],
+  oud:["tt yy oo pp","qq ww qq ww","water paard poort","stoel wortel sport","typtijger kwak kwak","straat gitaar tijger","de poes ligt op de stoel"],
+  stoer:["water paard poort stoel","wortel sport straat gitaar","typtijger typtijger typtijger","kwak kwak trippeltrap","de poes ligt op de stoel","ik typ heel graag"]},
+
+ {mod:1, t:"Onderrij: v b n m", nieuw:["v","b","n","m"],
+  jong:["vis","bal","ben","van","man","boom","neus","bloem","bananenbroek","olifantenneus"],
+  oud:["vv bb nn mm","vis bal ben van","boom banaan neus","vriend bloem avond","bananenbroek olifantenneus","mijn oma bakt een appeltaart","de man loopt naar buiten"],
+  stoer:["vis bal ben van boom","banaan neus vriend bloem","bananenbroek olifantenneus","mijn oma bakt een appeltaart","de man loopt naar buiten","een boom vol bananen"]},
+
+ {mod:1, t:"Onderrij: c z x , .", nieuw:["c","z","x",",","."],
+  jong:["zon","zee","zes","zand","doos","taxi","circus","ja, nee.","zoemzoem","gekke zebra"],
+  oud:["cc zz xx cc zz","zon zee zand zwart","muziek citroen circus","zoemzoem gekke zebra","taxi xylofoon plaza","ik zie zes zwarte zwanen.","wij eten pizza en zes koekjes."],
+  stoer:["zon zee zand zwart zomer","muziek citroen circus taxi","zoemzoem gekke zebra circusaap","ik zie zes zwarte zwanen.","wij eten pizza en zes koekjes.","de zon schijnt in de zomer."]},
+
+ {mod:1, t:"Hoofdletters met shift", nieuw:["Shift"],
+  jong:["Aap","Boom","Roos","Emma","Lars","Ik","Wij","Mama en Papa","Meneer Modderpoot.","Tante Tandpasta."],
+  oud:["Amsterdam","Nederland","Rotterdam","Ik ga naar school.","Wij wonen in Nederland.","Meneer Modderpoot eet soep met Tante Tandpasta.","Op maandag heb ik gym."],
+  stoer:["Amsterdam Rotterdam Maastricht","Ik ga naar school in Zwolle.","Wij wonen in Nederland.","Meneer Modderpoot eet soep met Tante Tandpasta.","Sara en Tim spelen buiten in de tuin.","Op maandag heb ik gym van meneer De Vries."]},
+
+ {mod:1, t:"De cijfers", nieuw:["1","2","3","4","5","6","7","8","9","0"],
+  jong:["1","2","3","12","123","7","89","10","12 apen","3 bananen"],
+  oud:["1234 5678 90","12 34 56 78 90","ik ben 10 jaar oud","12 apen en 3 bananen","in 2026 word ik ouder","mijn nummer is 06 12 34 56 78"],
+  stoer:["1234567890 1234567890","12 34 56 78 90 12 34","ik ben 12 jaar en mijn zus is 9","100 apen en 12 bananen","in 2026 loop ik 10 km","mijn nummer is 06 12 34 56 78"]},
+
+ {mod:1, t:"Alles door elkaar", nieuw:[],
+  jong:["De zon schijnt.","Ik kan typen!","Mijn hond heet Max.","Wij gaan naar zee.","De aap lacht om mijn broek.","Ik ben een kampioen!"],
+  oud:["Typen is niet moeilijk als je elke dag oefent.","Mijn broer en ik spelen buiten in de tuin.","Mijn hond eet bananen met pindakaas.","Wie het laatst lacht, lacht het best.","Nederland heeft twaalf provincies.","Ik kan nu blind typen op mijn toetsenbord!"],
+  stoer:["Typen is niet moeilijk als je elke dag een beetje oefent.","Mijn broer en ik spelen buiten in de tuin achter het huis.","De aap in de boom lacht om mijn nieuwe broek.","Wie het laatst lacht, lacht het best, zegt mijn opa altijd.","Nederland heeft twaalf provincies en heel veel fietsen.","Ik kan nu blind typen op mijn eigen toetsenbord!"]},
+
+ /* ---------- Letterregen-station 1 ---------- */
+ {mod:0, type:"spel", t:"Letterregen aan de rand", label:"tussenspel",
+  doel:{jong:10,oud:14,stoer:18}},
+
+ /* ---------- module 2: Inslijten ---------- */
+ {mod:2, t:"Thuisrij-sprint", nieuw:[], label:"thuisrij, snel",
+  jong:["kaas","sla","dag","hals","gala","laf","kaal","dak","haas","glas"],
+  oud:["kaas als dak","sla haas glas","half hals galg","dag lag laag","kalf laf gala","asdf jkl; asdf jkl;"],
+  stoer:["kaas als dak jas laf sla","half hals haas gaas glas","asdfg hjkl; asdfg hjkl;","dag lag laag half kalf","gala galg gaas glas hals","sla kaas als dag half haas"]},
+
+ {mod:2, t:"Zwakke vingers: q z x p", nieuw:[], label:"q z x p",
+  jong:["zon","zes","pop","top","taxi","pizza","zeep","zaak","quiz","plaza"],
+  oud:["pizza quiz taxi","zeep zaak zoem","expert puzzel plaza","xylofoon zebra","zes zwarte zwanen","zap zip zop"],
+  stoer:["pizza quiz taxi puzzel expert","xylofoon plaza zebra zeppelin","zes zwarte zwanen zwemmen zacht","quizvraag pizzapunt zeeppop","zap zip zop zap zip zop","expert puzzel prijs plaats"]},
+
+ {mod:2, t:"Dubbele letters", nieuw:[], label:"aa ee oo ll ss",
+  jong:["bal","appel","boom","muur","kaas","koffie","ballon","sissen","keffen","tttt"],
+  oud:["appel ballon koffie","muur boom kaas feest","sissen keffen brullen","voetbal kettingen","aa ee oo uu ii","bommen brommen"],
+  stoer:["appel ballon koffie kettingen","sissen keffen brullen snurken","voetbalveld zwembadwater","de bommen brommen in de tunnel","mijn ballon knalt bij de muur","aabb ccdd eeff gghh iijj"]},
+
+ {mod:2, t:"Tweeklanken: ij ei ui eu oe", nieuw:[], label:"ij ei ui eu oe",
+  jong:["ijs","trein","huis","deur","koe","geit","vuil","kou","blauw","sneeuw"],
+  oud:["ijs trein huis","deur koe geit","vuil kou blauw","sneeuw sleutel","de trein rijdt","een blauwe geit"],
+  stoer:["ijs trein huis deur koe geit","blauwe sneeuw vuile sleutel","de trein rijdt door de tuin","een blauwe geit eet koekjes","ui eu oe ij ei au ou","huisdeur treinreis koeienstal"]},
+
+ {mod:2, t:"Lange woorden", nieuw:[], label:"lange woorden",
+  jong:["boterham","voetbal","tandpasta","brandweer","zwembad","verjaardag","pindakaas","olifant"],
+  oud:["boterhamzakje tandenborstel","brandweerauto voetbalveld","verjaardagsfeest zwembadwater","pindakaaspot olifantenoor","sinterklaasavond","tandartsstoel"],
+  stoer:["verjaardagsfeest boterhamzakje","kerstboomverlichting tandenborstel","brandweerautosirene voetbalveldje","zwembadwaterglijbaan pindakaaspot","sinterklaasavondcadeautjes","olifantenoorbellenwinkel"]},
+
+ {mod:2, t:"Hoofdletters en namen", nieuw:[], label:"Shift + namen",
+  jong:["Anna","Bram","Sara","Tim","Zwolle","Utrecht","Ik ben Max.","Wij zijn Bram en Sara."],
+  oud:["Anna Bram Sara Tim","Zwolle Utrecht Breda","Ik woon in Nederland.","Mijn zus heet Sara.","Op zondag gaan wij naar Oma.","De Rijn stroomt door Arnhem."],
+  stoer:["Amsterdam Rotterdam Den Haag Utrecht","Mijn oom Jan woont in Maastricht.","In Groningen regent het vaak in November.","Anna, Bram en Sara spelen in het Vondelpark.","De Efteling ligt in Kaatsheuvel.","Nederland, Duitsland en Frankrijk zijn buren."]},
+
+ {mod:2, t:"Cijfers en tekens", nieuw:[], label:"cijfers , . - =",
+  jong:["1 2 3","10 20","5 - 3","4 x 2","1,5","2.0","12 en 8","9 uur"],
+  oud:["12-05-2026","06 12 34 56 78","3 x 4 = 12","10 - 4 = 6","1,5 liter melk","tel van 1 tot 20"],
+  stoer:["12-05-2026 en 31-12-2025","mijn nummer is 06-12 34 56 78","3 x 4 = 12 en 20 : 4 = 5","1,5 liter melk kost 2,30 euro","ik tel van 1 tot 20 en terug","postcode 7601 AB, huisnummer 12"]},
+
+ {mod:2, t:"Gekke woorden", nieuw:[], label:"heel gek",
+  jong:["bananenbroek","sokkenmonster","modderkikker","wafelwezel","zeurzebra","kriebelkonijn","slobberslak","tandpastatijger"],
+  oud:["bananenbroek sokkenmonster","modderkikker wafelwezel","zeurzebra kriebelkonijn","slobberslak tandpastatijger","pindakaaspiraat flipperflamingo","knoflookknijper prullenpanter"],
+  stoer:["De tandpastatijger poetst zijn tanden met bananen.","Een sokkenmonster woont onder mijn bed en snurkt.","De kriebelkonijn kietelt de zeurzebra in de jungle.","Mijn pindakaaspiraat vaart op een wafelwezel.","Knoflookknijper Klaas kietelt kikkers in de keuken.","De flipperflamingo danst met de slobberslak."]},
+
+ {mod:2, t:"Zinnen op snelheid", nieuw:[], label:"zinnen",
+  jong:["Ik typ elke dag.","Mijn hond is lief.","De aap eet een banaan.","Wij gaan naar buiten.","Het is mooi weer.","Ik kan al typen!"],
+  oud:["Ik typ elke dag een beetje sneller.","De aap in de boom eet een banaan.","Mijn broer speelt buiten met de bal.","Wij gaan morgen naar het zwembad.","Het regent, dus wij blijven binnen.","Typen wordt steeds makkelijker."],
+  stoer:["Ik typ elke dag een beetje sneller dan gisteren.","De aap in de boom eet een banaan en gooit de schil weg.","Mijn broer speelt buiten met de bal van de buren.","Wij gaan morgen met het hele gezin naar het zwembad.","Het regent hard, dus wij blijven vandaag lekker binnen.","Typen wordt steeds makkelijker als je blijft oefenen."]},
+
+ {mod:2, t:"De Tijgerproef", nieuw:[], label:"eindtoets",
+  jong:["Ik ben een tijger!","Mijn naam is Max.","12 apen in de boom.","De zon schijnt fel.","Ik typ zonder kijken.","Klaar is Kees!"],
+  oud:["Ik ben een echte typtijger geworden!","In 2026 typ ik 20 woorden per minuut.","De zeurzebra en de modderkikker zijn vrienden.","Kijk niet naar je handen, kijk naar het scherm.","Mijn record is 12 punten bij Letterregen.","Wie goed oefent, wordt een kampioen."],
+  stoer:["Ik ben een echte typtijger en ik kijk nooit meer naar mijn handen.","In 2026 typ ik minstens 30 woorden per minuut zonder fouten.","De zeurzebra, de modderkikker en de wafelwezel zijn dikke vrienden.","Kijk niet naar je handen, maar naar het scherm - dat gaat sneller.","Mijn record bij Letterregen staat op 25 punten, en dat wordt meer.","Wie elke dag een kwartiertje oefent, wordt vanzelf een kampioen."]},
+
+ /* ---------- Letterregen-station 2 ---------- */
+ {mod:0, type:"spel", t:"Letterregen bij de rivier", label:"tussenspel",
+  doel:{jong:14,oud:20,stoer:26}},
+
+ /* ---------- module 3: Sneller ---------- */
+ {mod:3, t:"Korte woordjes", nieuw:[], label:"de het een",
+  jong:["de","het","een","en","ik","je","is","op","in","van"],
+  oud:["de het een en","ik je is op in","van dat niet ook","met voor maar dan","als toen zij hij","wij hun ons jij"],
+  stoer:["de het een en ik je is op in van","dat niet ook met voor maar dan als","toen zij hij wij hun ons jij mij","er om te uit aan bij door over","was zijn heeft kan mag moet wil gaat","dit die deze dat daar hier waar wanneer"]},
+
+ {mod:3, t:"Woordparen", nieuw:[], label:"twee woorden",
+  jong:["de man","het huis","een boom","de kat","het bos","een bal","de zon","het pad"],
+  oud:["de man loopt","het huis staat","een boom valt","de kat slaapt","het bos is stil","een bal rolt weg"],
+  stoer:["de man loopt over het pad naar huis","het huis staat naast een hoge boom","de kat slaapt op de warme steen","een bal rolt langzaam door het gras","het bos is stil in de vroege morgen","de zon zakt achter de bergen weg"]},
+
+ {mod:3, t:"Veelgebruikt: e n a t", nieuw:[], label:"e n a t",
+  jong:["en","net","nat","ten","eten","tante","natte","tenen","tent","nette"],
+  oud:["en net nat ten","eten tante natte","tenen antenne tent","nette tanten eten","ntnt tntn ntnt","eaea aeae eaea"],
+  stoer:["en net nat ten eten tante","natte tenen antenne tent nette","ntnt tntn ntnt tntn ntnt","eaea aeae eaea aeae eaea","tante Nan eet natte noten","tenen tanden tenten tanten"]},
+
+ {mod:3, t:"Handige combinaties", nieuw:[], label:"ch sch ng",
+  jong:["en","er","de","ij","ee","ch","ng","nk","sch","aa"],
+  oud:["en er de ij","ee oo aa uu","ch ng nk sch","ijs eis uit oud","bank bang lang link","dicht licht nacht"],
+  stoer:["en er de ij ee oo aa uu","ch ng nk sch st sp tr br","bank bang lang link dank denk","dicht licht nacht zacht wacht","school schaap schoen schrift","strand sterk sport straat stroom"]},
+
+ {mod:3, t:"Woorden met sch", nieuw:[], label:"sch",
+  jong:["school","schaap","schoen","schat","schip","schuur","schaar","schrift"],
+  oud:["school schaap schoen","schat schip schuur","schrift schouder schaar","misschien schitteren","schoolplein schoolbord","de schoen van het schaap"],
+  stoer:["school schaap schoen schat schip","schuur schrift schouder schaar schaal","misschien schitteren schaduw schommel","het schaap in de schuur schrikt","op het schoolplein staat een schommel","de schipper schrijft met een schuine pen"]},
+
+ {mod:3, t:"Woorden met ch en g", nieuw:[], label:"ch en g",
+  jong:["lachen","nacht","licht","acht","zacht","gracht","geel","gaan"],
+  oud:["lachen nacht licht","acht zacht gracht","gezellig geel gaan","dicht wacht macht","logisch gelachen","de nacht is zacht"],
+  stoer:["lachen nacht licht acht zacht","gracht gezellig gelachen logisch","dicht wacht macht pracht kracht","in de nacht lachen wij zacht","langs de gracht staan gezellige huizen","de kracht van acht sterke paarden"]},
+
+ {mod:3, t:"Korte zinnen op tempo", nieuw:[], label:"tempo",
+  jong:["Ik ga naar huis.","De kat is weg.","Het is al laat.","Wij eten pizza.","Mijn boek is dik.","De bal is rond."],
+  oud:["Ik ga na het eten naar buiten.","De kat van de buren is weg.","Het is al laat, dus wij gaan slapen.","Wij eten vandaag pizza met salade.","Mijn boek over dieren is heel dik.","De bal rolt van de heuvel af."],
+  stoer:["Ik ga na het eten nog even lekker naar buiten.","De kat van de buren is al twee dagen weg.","Het is al laat, dus wij gaan zo naar bed.","Wij eten vandaag pizza met een grote salade.","Mijn boek over dieren in de jungle is heel dik.","De bal rolt van de heuvel af en ligt in de sloot."]},
+
+ {mod:3, t:"Cijfers snel", nieuw:[], label:"cijfers",
+  jong:["1 2 3 4 5","6 7 8 9 0","10 20 30","12 34 56","100 200","5 en 5 is 10"],
+  oud:["12 34 56 78 90","in 2026 en in 2027","huisnummer 14 en 15","3 x 7 is 21","10 20 30 40 50 60","postcode 7601 en 7602"],
+  stoer:["1234567890 0987654321","in 2026, 2027 en 2028","3 x 7 is 21 en 8 x 8 is 64","postcode 7601 AB, huisnummer 14","van 10 tot 100 in stappen van 10","06 12 34 56 78 en 06 98 76 54 32"]},
+
+ {mod:3, t:"Tongbrekers", nieuw:[], label:"heel gek",
+  jong:["kip kap kop","zes zakken zout","de kat krabt","tien tenen","droge doeken","slome slak"],
+  oud:["Zes zakken zout staan achter de schuur.","De kat krabt de krullen van de trap.","Tien tenen tikken tegen de tafel.","Droge doeken drogen door de dag.","Slome slakken slikken slappe sla.","Knappe knakworsten knallen nooit."],
+  stoer:["Zes zakken zout staan al zes zomers achter de schuur.","De kat krabt de krullen van de kromme keukentrap.","Tien tenen tikken tegelijk tegen de tafelpoot.","Slome slakken slikken slappe sla op sloffen.","Knappe knakworsten knallen nooit, knikkers knallen nooit.","De zeurzebra zoekt zes zoete zwarte zakjes zout."]},
+
+ {mod:3, t:"De grottenproef", nieuw:[], label:"moduletoets",
+  jong:["Ik typ steeds sneller.","De school is dicht.","Acht apen in de nacht.","Mijn schoen is nat.","Wij lachen hard.","Klaar met de grotten!"],
+  oud:["Ik typ steeds sneller en maak bijna geen fouten.","De school gaat om acht uur open en om drie uur dicht.","Acht apen lachen in de nacht bij de gracht.","Misschien is mijn schoen nat van het water.","In 2026 typ ik 20 woorden per minuut.","Ik ben door de grotten heen gekomen!"],
+  stoer:["Ik typ steeds sneller en ik maak bijna geen fouten meer.","De school gaat om acht uur open en om drie uur weer dicht.","Acht apen lachen zacht in de nacht langs de gracht.","Misschien staat de schoen van het schaap nog in de schuur.","In 2026 typ ik minstens 30 woorden per minuut zonder te kijken.","De grotten zijn door, nu op naar de bergpas!"]},
+
+ /* ---------- Letterregen-station 3 ---------- */
+ {mod:0, type:"spel", t:"Letterregen in de grot", label:"tussenspel",
+  doel:{jong:18,oud:26,stoer:34}},
+
+ /* ---------- module 4: Meester ---------- */
+ {mod:4, t:"Hoofdletters middenin", nieuw:[], label:"hoofdletters",
+  jong:["Ik en Bram","Sara en Tim","In Zwolle","De Rijn","Op Texel","Mijn oma Ans"],
+  oud:["Ik ga met Bram naar Zwolle.","Sara en Tim wonen in Utrecht.","De Rijn stroomt langs Arnhem.","Op Texel zag ik veel vogels.","Mijn oma Ans woont in Assen.","In Januari is het vaak koud."],
+  stoer:["Ik ga volgende week met Bram en Sara naar Zwolle.","De Rijn stroomt langs Arnhem richting Rotterdam.","Op Texel zag ik veel vogels en een paar zeehonden.","Mijn oma Ans woont sinds Maart in Assen.","In Januari en Februari is het in Nederland vaak koud.","Meester Jan uit Breda leest voor uit een boek van Roald Dahl."]},
+
+ {mod:4, t:"Punt, komma en vraagteken", nieuw:[], label:", . ?",
+  jong:["Hoi, hoe gaat het?","Ja, dat is goed.","Wat doe je?","Nee, niet nu.","Wie is daar?","Kom je ook?"],
+  oud:["Hoi, hoe gaat het met jou?","Wat ga je doen, morgen of overmorgen?","Wie heeft mijn boek gezien?","Nee, dat kan echt niet.","Kom je ook, of blijf je thuis?","Waarom lacht die aap zo hard?"],
+  stoer:["Hoi, hoe gaat het met jou en met je broer?","Wat ga je doen, morgen of pas overmorgen?","Wie heeft mijn boek over de jungle gezien, jij of Bram?","Kom je ook naar het feest, of blijf je liever thuis?","Waarom lacht die aap zo hard om mijn nieuwe broek?","Als het regent, blijven wij binnen; als de zon schijnt, gaan wij eruit."]},
+
+ {mod:4, t:"Woorden met een streepje", nieuw:[], label:"streepje",
+ jong:["zwart-wit","e-mail","tv-kast","ex-vriend","zo-zo","auto-weg"],
+  oud:["zwart-wit foto","een e-mail sturen","de tv-kast staat leeg","de A-1 naar Amsterdam","zee-egel en zee-anemoon","na-apen doen wij niet"],
+  stoer:["Wij maakten een zwart-wit foto van de zee-egel.","Stuur die e-mail alsjeblieft voor half-zes weg.","De tv-kast en de cd-speler staan al drie jaar leeg.","Op de A-1 richting Amsterdam stond een file van 12 kilometer.","Een zee-anemoon lijkt op een bloem, maar is een dier.","Na-apen doen wij niet, zelf-nadenken wel."]},
+
+ {mod:4, t:"Getallen in tekst", nieuw:[], label:"getallen",
+  jong:["Om 8 uur","Op 12 mei","3 appels","In 2026","Groep 6","5 euro"],
+  oud:["Om 8 uur begint de school.","Op 12 mei word ik 10 jaar.","Ik koop 3 appels en 2 peren.","In 2026 zit ik in groep 6.","Dat kost 5 euro en 50 cent.","De trein van 14.30 uur is vol."],
+  stoer:["Om 8.15 uur begint de school en om 15.00 uur is het uit.","Op 12 mei 2026 word ik 10 jaar en geef ik een feest.","Ik koop 3 appels, 2 peren en 1 kilo bananen.","De trein van 14.30 uur uit Zwolle had 12 minuten vertraging.","Dat boek van 320 bladzijden kost 24 euro en 95 cent.","In 2024 waren er 17,9 miljoen mensen in Nederland."]},
+
+ {mod:4, t:"Namen en plaatsen", nieuw:[], label:"namen",
+  jong:["Amsterdam","Rotterdam","Utrecht","Zwolle","Breda","Assen"],
+  oud:["Amsterdam en Rotterdam","Utrecht, Zwolle en Breda","Den Haag en Den Bosch","Sara, Tim en Bram","meneer De Vries","juf Van Dijk"],
+  stoer:["Amsterdam, Rotterdam, Den Haag en Utrecht zijn grote steden.","Sara, Tim en Bram gaan met de trein naar Den Bosch.","Meneer De Vries en juf Van Dijk werken op dezelfde school.","Wij reden van Zwolle via Apeldoorn naar Arnhem.","In Friesland heten de plaatsen soms Wolvega of Drachten.","Nederland, Duitsland, Frankrijk en Denemarken liggen in Europa."]},
+
+ {mod:4, t:"Lange woorden", nieuw:[], label:"lang",
+  jong:["boterham","voetbal","tandpasta","brandweer","zwembad","olifant"],
+  oud:["boterhamzakje tandenborstel","brandweerauto voetbalveld","verjaardagsfeest zwembadwater","sinterklaasavond kaarsenstandaard","tandartsstoel wachtkamer","olifantenoor pindakaaspot"],
+  stoer:["verjaardagsfeestversiering boterhamzakjesdoos","kerstboomverlichting tandenborstelbeker","brandweerautosirene voetbalveldverlichting","zwembadwaterglijbaan pindakaaspotdeksel","sinterklaasavondcadeautjespapier","olifantenoorbellenwinkelbediende"]},
+
+ {mod:4, t:"Een kort verhaal", nieuw:[], label:"verhaal",
+  jong:["Er was een aap.","Hij at een banaan.","Toen kwam een tijger.","De aap rende weg.","De tijger lachte.","Ze werden vrienden."],
+  oud:["Er was eens een aap die in een hoge boom woonde.","Elke dag at hij drie bananen en een handvol noten.","Toen kwam er een tijger langs die honger had.","De aap schrok en klom snel naar de top van de boom.","De tijger keek omhoog en begon heel hard te lachen.","Sinds die dag zijn de aap en de tijger dikke vrienden."],
+  stoer:["Er was eens een aap die hoog in een oude boom aan de rivier woonde.","Elke ochtend at hij drie bananen, een mango en een handvol noten.","Op een warme middag kwam er een tijger langs die veel honger had.","De aap schrok zo erg dat hij meteen naar de top van de boom klom.","De tijger keek omhoog, zag de bange aap en begon hard te lachen.","Sinds die dag zijn de aap en de tijger de beste vrienden van de jungle."]},
+
+ {mod:4, t:"Een briefje typen", nieuw:[], label:"briefje",
+  jong:["Hoi oma,","Hoe gaat het?","Ik kan typen!","Groetjes,","Tot ziens!","Dag oma."],
+  oud:["Hoi oma, hoe gaat het met u?","Ik kan nu blind typen op de computer.","Volgende week kom ik langs met papa.","Wilt u dan pannenkoeken bakken?","Groetjes van je kleinzoon.","Tot volgende week!"],
+  stoer:["Hoi oma, hoe gaat het met u en met de buurvrouw?","Ik kan nu blind typen: 30 woorden per minuut zonder te kijken.","Volgende week zaterdag kom ik langs, samen met papa en Sara.","Wilt u dan pannenkoeken bakken met stroop en poedersuiker?","Ik neem mijn nieuwe boek over de jungle mee om voor te lezen.","Veel groetjes van je kleinzoon, tot volgende week zaterdag!"]},
+
+ {mod:4, t:"Grappige verhalen", nieuw:[], label:"heel gek",
+  jong:["Mijn sok kan praten.","De kat draagt een pet.","Papa eet zeep.","De boom loopt weg.","Mijn broek lacht.","De maan is van kaas."],
+  oud:["Mijn linkersok kan praten, maar alleen op maandag.","De kat van de buren draagt sinds kort een rode pet.","Papa dacht dat de zeep kaas was en nam een grote hap.","Vannacht liep de boom uit onze tuin gewoon weg.","Mijn broek lacht altijd als ik in de plassen spring.","De maan is van kaas, zegt de zeurzebra, en hij weet het zeker."],
+  stoer:["Mijn linkersok kan praten, maar alleen op maandag en na acht uur.","De kat van de buren draagt sinds kort een rode pet met een pluim.","Papa dacht dat de zeep een stuk kaas was en nam een flinke hap.","Vannacht liep de boom uit onze achtertuin gewoon de straat op.","Mijn broek ligt dubbel van het lachen als ik in de plassen spring.","De maan is van kaas, zegt de zeurzebra, en een tijger zegt van pindakaas."]},
+
+ {mod:4, t:"De bergpasproef", nieuw:[], label:"moduletoets",
+  jong:["Ik ben bijna klaar!","Nog een les te gaan.","De bergpas is door.","Mijn tijger is trots.","Ik typ heel goed.","Op naar de tempel!"],
+  oud:["Ik ben bijna klaar met de hele cursus!","Nog een module en dan komt het examen.","De bergpas is door, de tempel wacht.","Mijn tijger draagt nu een pet en een cape.","Op 12 mei doe ik het eindexamen.","Wie doorzet, wordt een echte typtijger."],
+  stoer:["Ik ben bijna klaar met de hele cursus en dat voelt heel goed.","Nog een module en dan komt het echte eindexamen met een diploma.","De bergpas is door; boven op de berg zie ik al de tempel liggen.","Mijn tijger draagt inmiddels een pet, een zonnebril en een cape.","Op 12 mei 2026 doe ik het eindexamen, en ik ga het halen.","Wie elke dag oefent en doorzet, wordt vanzelf een echte typtijger."]},
+
+ /* ---------- Letterregen-station 4 ---------- */
+ {mod:0, type:"spel", t:"Letterregen op de bergpas", label:"tussenspel",
+  doel:{jong:22,oud:32,stoer:42}},
+
+ /* ---------- module 5: het examen ---------- */
+ {mod:5, t:"Proefexamen", nieuw:[], label:"oefenen",
+  jong:["De aap eet een banaan.","Ik typ zonder te kijken.","Mijn tijger heet Max.","Op 12 mei is het feest.","Wij gaan naar de tempel.","Ik ben er bijna!"],
+  oud:["De aap in de boom eet een banaan en gooit de schil weg.","Ik typ zonder te kijken, want ik ken alle toetsen.","Op 12 mei om 8 uur begint het grote feest.","In de tempel wacht het diploma op mij.","Sara, Tim en Bram doen het examen ook.","Nog een keer oefenen, dan is het zover!"],
+  stoer:["De aap in de boom eet een banaan en gooit de schil naar de tijger.","Ik typ zonder te kijken, want ik ken alle 26 letters uit mijn hoofd.","Op 12 mei 2026 om 8.15 uur begint het grote junglefeest.","Boven in de tempel, achter een zware deur, wacht mijn diploma.","Sara, Tim en Bram doen volgende week hetzelfde examen als ik.","Nog een keer rustig oefenen, en dan is het eindelijk zover!"]},
+
+ {mod:5, t:"Het eindexamen", type:"examen", nieuw:[], label:"examen",
+  jong:["Ik ben een echte typtijger.","Mijn vingers weten de weg.","Ik kijk naar het scherm.","De jungle is van mij.","Kaas, banaan en pizza.","Klaar is Kees!"],
+  oud:["Ik ben een echte typtijger en mijn vingers weten de weg.","Ik kijk naar het scherm en niet meer naar mijn handen.","In de jungle wonen apen, tijgers, zebras en flamingos.","Op 12 mei 2026 haalde ik mijn typdiploma.","Wie elke dag oefent, wordt beter dan hij denkt.","Kaas, bananen, pizza en pindakaas staan op de lijst."],
+  stoer:["Ik ben een echte typtijger geworden en mijn vingers weten de weg.","Ik kijk alleen nog naar het scherm en nooit meer naar mijn handen.","In de jungle wonen apen, tijgers, zebras, flamingos en slakken.","Op 12 mei 2026 haalde ik mijn typdiploma met 30 woorden per minuut.","Wie elke dag een kwartiertje oefent, wordt veel beter dan hij denkt.","Kaas, bananen, pizza, pindakaas en 12 pakken hagelslag staan erop."]}
+];
+var MODULES = [
+ {nr:1, naam:"Beginner",  ic:"🌱", sub:"Alle letters leren, stap voor stap",          verhaal:"Je staat aan de rand van de jungle. Hier leer je je vingers kennen en alle letters vinden."},
+ {nr:2, naam:"Inslijten", ic:"🐊", sub:"Zelfde toetsen, maar nu sneller en zonder kijken", verhaal:"Bij de rivier moet je zeker zijn van je zaak. Alles wat je kent, nog een keer - maar nu vlot."},
+ {nr:3, naam:"Sneller",   ic:"⚡", sub:"Veelgebruikte woorden en combinaties op tempo",   verhaal:"In de donkere grotten kun je niet naar je handen kijken. Hier maak je tempo."},
+ {nr:4, naam:"Meester",   ic:"🏔️", sub:"Alles door elkaar: leestekens, getallen, verhalen", verhaal:"De bergpas is steil. Hoofdletters, komma s, getallen en lange verhalen: alles komt langs."},
+ {nr:5, naam:"Examen",    ic:"🏆", sub:"Proefexamen, eindexamen en je diploma",           verhaal:"Boven op de berg staat de tempel. Haal het examen en je diploma is van jou."}
+];
+// de drie niveaus. Bewust geen leeftijden erbij: het niveau zegt hoe de lessen zijn,
+// niet hoe oud je bent. De codes jong/oud/stoer blijven staan voor oude opgeslagen profielen.
+var MODI = [
+ {id:"jong",  naam:"Aapje",  ic:"🐒", uitleg:"grote letters en korte woordjes, met veel hulp op het scherm"},
+ {id:"oud",   naam:"Panter", ic:"🐆", uitleg:"woorden en zinnen, met je snelheid erbij"},
+ {id:"stoer", naam:"Tijger", ic:"🐅", uitleg:"lange zinnen en een snelheidsdoel voor de derde ster"}
+];
+// snelheidsdoel (woorden per minuut) voor de derde ster, per niveau en module.
+// Het niveau Aapje krijgt nooit tijdsdruk.
+var DOEL_WPM = {
+  jong: {1:0, 2:0,  3:0,  4:0,  5:0},
+  oud:  {1:0, 2:18, 3:20, 4:22, 5:0},
+  stoer:{1:18,2:30, 3:32, 4:34, 5:0}
+};
+// de norm van het eindexamen: zo snel en zo netjes moet het, dan volgt het diploma
+var EXAMEN_NORM = {
+  jong: {wpm:10, acc:90},
+  oud:  {wpm:18, acc:93},
+  stoer:{wpm:24, acc:96}
+};
+// rangen op basis van verdiende tijgerpunten
+var RANGEN = [
+ {punten:0,    naam:"Welp",         ic:"🐾"},
+ {punten:100,  naam:"Speurneus",    ic:"🔍"},
+ {punten:250,  naam:"Klimmer",      ic:"🌿"},
+ {punten:500,  naam:"Jager",        ic:"🐆"},
+ {punten:900,  naam:"Tijger",       ic:"🐅"},
+ {punten:1500, naam:"Grootmeester", ic:"👑"}
+];
+// het winkeltje: kleding voor je tijger, te koop met tijgerpunten
+var WINKEL = [
+ {id:"pet",   ic:"🧢", naam:"Pet",        prijs:60,  plek:"hoofd"},
+ {id:"bril",  ic:"🕶️", naam:"Zonnebril",  prijs:90,  plek:"ogen"},
+ {id:"sjaal", ic:"🧣", naam:"Sjaal",      prijs:120, plek:"nek"},
+ {id:"rugzak",ic:"🎒", naam:"Rugzak",     prijs:150, plek:"zij"},
+ {id:"cape",  ic:"🦸", naam:"Cape",       prijs:200, plek:"zij"},
+ {id:"kroon", ic:"👑", naam:"Kroon",      prijs:350, plek:"hoofd"}
+];
+
+// vragen van de vingerles: {v:...} = vinger aanwijzen, {toets:...} = vinger bij een toets zoeken
+var VINGERVRAGEN = {
+  jong:[{v:"lw"},{v:"rw"},{v:"lm"},{v:"rm"},{v:"lr"},{v:"rr"},{v:"lp"},{v:"rp"},{v:"du"},{toets:"f"},{toets:"j"},{toets:"a"}],
+  oud:[{v:"lw"},{v:"rm"},{v:"lp"},{v:"rr"},{v:"du"},{toets:"d"},{toets:"k"},{toets:";"}],
+  stoer:[{v:"rr"},{v:"lm"},{v:"rp"},{toets:"s"},{toets:"l"},{toets:" "}]
+};
+var TOETS_VINGER = {a:"lp",s:"lr",d:"lm",f:"lw",j:"rw",k:"rm",l:"rr",";":"rp"," ":"du"};
+
+var BADGES = [
+ {id:"eerste", ic:"🎉", naam:"Eerste les klaar"},
+ {id:"thuisrij", ic:"🏠", naam:"Thuisrij-baas"},
+ {id:"perfect", ic:"💎", naam:"Les zonder foutjes"},
+ {id:"drie", ic:"⭐", naam:"5x drie sterren"},
+ {id:"alfabet", ic:"🔤", naam:"Hele alfabet gehad"},
+ {id:"beginner", ic:"🌱", naam:"Module Beginner klaar"},
+ {id:"gek", ic:"🍌", naam:"Gekke woorden getypt"},
+ {id:"spel", ic:"🎮", naam:"20 punten in Letterregen"},
+ {id:"combo", ic:"🔥", naam:"25 goed op een rij"},
+ {id:"sneller", ic:"⚡", naam:"Module Sneller klaar"},
+ {id:"meester", ic:"🏔️", naam:"Module Meester klaar"},
+ {id:"koopman", ic:"🛒", naam:"Iets gekocht in de winkel"},
+ {id:"diploma", ic:"🎓", naam:"Typdiploma gehaald"},
+ {id:"kampioen", ic:"🏆", naam:"Alle lessen klaar"}
+];
+
+var KLEUREN = ["#2f9e44","#e8590c","#1c7ed6","#e64980","#7048e8","#0ca678","#f59f00","#a9401b"];
+
+/* ================================================================
+   2. Toetsenbord (Nederlands QWERTY / US-International)
+   ================================================================ */
+// echte hex-waarden: een SVG fill-attribuut kan niet met var(--...) werken
+var V = {
+  lp:{n:"linkerpink", c:"#f06595"},         lr:{n:"linkerringvinger", c:"#ff922b"},
+  lm:{n:"linkermiddelvinger", c:"#fcc419"}, lw:{n:"linkerwijsvinger", c:"#51cf66"},
+  du:{n:"duim", c:"#adb5bd"},
+  rw:{n:"rechterwijsvinger", c:"#51cf66"},  rm:{n:"rechtermiddelvinger", c:"#fcc419"},
+  rr:{n:"rechterringvinger", c:"#ff922b"},  rp:{n:"rechterpink", c:"#f06595"}
+};
+// k = normale teken, s = teken met shift, u = breedte in units, v = vinger, lab = label voor brede toets
+var RIJEN = [
+ [{k:"`",s:"~",v:"lp"},{k:"1",s:"!",v:"lp"},{k:"2",s:"@",v:"lr"},{k:"3",s:"#",v:"lm"},{k:"4",s:"$",v:"lw"},{k:"5",s:"%",v:"lw"},
+  {k:"6",s:"^",v:"rw"},{k:"7",s:"&",v:"rw"},{k:"8",s:"*",v:"rm"},{k:"9",s:"(",v:"rr"},{k:"0",s:")",v:"rp"},{k:"-",s:"_",v:"rp"},{k:"=",s:"+",v:"rp"},
+  {lab:"Backspace",u:2,v:"rp"}],
+ [{lab:"Tab",u:1.5,v:"lp"},{k:"q",v:"lp"},{k:"w",v:"lr"},{k:"e",v:"lm"},{k:"r",v:"lw"},{k:"t",v:"lw"},
+  {k:"y",v:"rw"},{k:"u",v:"rw"},{k:"i",v:"rm"},{k:"o",v:"rr"},{k:"p",v:"rp"},{k:"[",s:"{",v:"rp"},{k:"]",s:"}",v:"rp"},{k:"\\",s:"|",u:1.5,v:"rp"}],
+ [{lab:"Caps",u:1.75,v:"lp"},{k:"a",v:"lp",h:1},{k:"s",v:"lr",h:1},{k:"d",v:"lm",h:1},{k:"f",v:"lw",h:1},{k:"g",v:"lw"},
+  {k:"h",v:"rw"},{k:"j",v:"rw",h:1},{k:"k",v:"rm",h:1},{k:"l",v:"rr",h:1},{k:";",s:":",v:"rp",h:1},{k:"'",s:"\"",v:"rp"},{lab:"Enter",u:2.25,v:"rp"}],
+ [{lab:"Shift",u:2.25,v:"lp",shift:"L"},{k:"z",v:"lp"},{k:"x",v:"lr"},{k:"c",v:"lm"},{k:"v",v:"lw"},{k:"b",v:"lw"},
+  {k:"n",v:"rw"},{k:"m",v:"rw"},{k:",",s:"<",v:"rm"},{k:".",s:">",v:"rr"},{k:"/",s:"?",v:"rp"},{lab:"Shift",u:2.75,v:"rp",shift:"R"}],
+ [{lab:"Ctrl",u:1.75},{lab:"Alt",u:1.5},{k:" ",u:8.5,v:"du",lab:"spatie"},{lab:"Alt",u:1.5},{lab:"Ctrl",u:1.75}]
+];
+
+function bouwToetsenbord(doel){
+  doel.innerHTML="";
+  var map={};
+  RIJEN.forEach(function(rij){
+    var r=document.createElement("div"); r.className="kb-rij";
+    rij.forEach(function(t){
+      var el=document.createElement("div");
+      el.className="kb-toets";
+      var u=t.u||1;
+      el.style.width="calc(var(--ku) * "+u+" + "+((u-1)*5)+"px)";
+      if(t.lab && t.k!==" "){ el.classList.add("breed"); el.textContent=t.lab; }
+      else if(t.k===" "){ el.classList.add("breed"); el.textContent="spatie"; }
+      else { el.textContent = t.s ? t.k : t.k; }
+      if(t.v){ el.classList.add("vinger"); el.style.background=V[t.v].c; el.style.borderBottomColor="rgba(0,0,0,.2)"; }
+      if(t.h) el.classList.add("thuis");
+      if(t.shift) map["__shift"+t.shift]=el;
+      if(t.k){ map[t.k]={el:el,v:t.v,shift:false}; }
+      if(t.s){ map[t.s]={el:el,v:t.v,shift:true}; }
+      r.appendChild(el);
+    });
+    doel.appendChild(r);
+  });
+  // hoofdletters
+  "abcdefghijklmnopqrstuvwxyz".split("").forEach(function(c){
+    if(map[c]) map[c.toUpperCase()]={el:map[c].el,v:map[c].v,shift:true};
+  });
+  return map;
+}
+function bouwLegenda(doel){
+  doel.innerHTML="";
+  [["lp","pink"],["lr","ringvinger"],["lm","middelvinger"],["lw","wijsvinger"],["du","duim"]].forEach(function(p){
+    var s=document.createElement("span");
+    s.innerHTML='<i style="background:'+V[p[0]].c+'"></i>'+p[1];
+    doel.appendChild(s);
+  });
+}
+
+/* ================================================================
+   2b. Twee handen als tekening - zelfde kleuren als het toetsenbord
+   ================================================================ */
+var HAND_W=620, HAND_H=268;
+var PALM={x:30,y:138,w:208,h:88,rx:34};
+var DUIM={x:226,y:154,w:74,h:42,rot:20};
+// geometrie van de linkerhand; de rechterhand is de spiegeling ervan
+var HANDVINGERS=[
+ {v:"lp", vr:"rp", x:32,  y:74, w:42, h:80,  kort:"pink",   t:"a", tr:";"},
+ {v:"lr", vr:"rr", x:82,  y:42, w:44, h:112, kort:"ring",   t:"s", tr:"l"},
+ {v:"lm", vr:"rm", x:134, y:30, w:46, h:124, kort:"midden", t:"d", tr:"k"},
+ {v:"lw", vr:"rw", x:188, y:52, w:46, h:102, kort:"wijs",   t:"f", tr:"j"}
+];
+function svgEl(naam,attr){
+  var e=document.createElementNS("http://www.w3.org/2000/svg",naam);
+  for(var k in attr) e.setAttribute(k,attr[k]);
+  return e;
+}
+function svgTekst(x,y,s,px,dik){
+  var t=svgEl("text",{x:x,y:y,"text-anchor":"middle","font-size":px});
+  if(dik) t.setAttribute("font-weight","bold");
+  t.textContent=s; return t;
+}
+// opts.klik = functie(vingerId) maakt de vingers aanklikbaar, opts.labels = namen erbij
+function bouwHanden(doel,opts){
+  opts=opts||{};
+  doel.innerHTML="";
+  var svg=svgEl("svg",{viewBox:"0 0 "+HAND_W+" "+HAND_H,"class":"handen-svg"});
+  var map={};
+  function reg(v,el){ (map[v]=map[v]||[]).push(el); }
+  [false,true].forEach(function(spiegel){
+    function mx(x,w){ return spiegel ? HAND_W-(x+w) : x; }
+    HANDVINGERS.forEach(function(g){                      // vingers eerst...
+      var v = spiegel? g.vr : g.v;
+      var r=svgEl("rect",{x:mx(g.x,g.w),y:g.y,width:g.w,height:g.h+40,rx:g.w/2,
+                          fill:V[v].c,"class":"vg"+(opts.klik?" klikbaar":"")});
+      svg.appendChild(r); reg(v,r);
+      if(opts.klik) r.addEventListener("click",function(){ opts.klik(v); });
+    });
+    svg.appendChild(svgEl("rect",{x:mx(PALM.x,PALM.w),y:PALM.y,width:PALM.w,height:PALM.h,
+                                  rx:PALM.rx,fill:"#ffe0c2",stroke:"#e8a76a","stroke-width":3})); // ...dan de handpalm eroverheen
+    var dx=mx(DUIM.x,DUIM.w), cx=dx+DUIM.w/2, cy=DUIM.y+DUIM.h/2;
+    var duim=svgEl("rect",{x:dx,y:DUIM.y,width:DUIM.w,height:DUIM.h,rx:DUIM.h/2,fill:V.du.c,
+                           "class":"vg"+(opts.klik?" klikbaar":""),
+                           transform:"rotate("+(spiegel?-DUIM.rot:DUIM.rot)+" "+cx+" "+cy+")"});
+    svg.appendChild(duim); reg("du",duim);
+    if(opts.klik) duim.addEventListener("click",function(){ opts.klik("du"); });
+    if(opts.labels){
+      HANDVINGERS.forEach(function(g){
+        svg.appendChild(svgTekst(mx(g.x,g.w)+g.w/2, g.y-9, g.kort, 15));
+        svg.appendChild(svgTekst(mx(g.x,g.w)+g.w/2, g.y+32, spiegel?g.tr:g.t, 21, true));
+      });
+      svg.appendChild(svgTekst(cx, DUIM.y-14, "duim", 15));
+      svg.appendChild(svgTekst(mx(PALM.x,PALM.w)+PALM.w/2, PALM.y+PALM.h+30,
+                               spiegel?"rechterhand":"linkerhand", 18, true));
+    }
+  });
+  doel.appendChild(svg);
+  return map;
+}
+function zetHand(map,v){
+  Object.keys(map).forEach(function(k){
+    map[k].forEach(function(e){ e.classList.remove("aan","goed","mis"); });
+  });
+  if(v && map[v]) map[v].forEach(function(e){ e.classList.add("aan"); });
+}
+
+/* ================================================================
+   2c. Tijgerkop - getekend naar de kenmerken van een echte tijger:
+       brede kop met wangbaarden, oranje vacht met zwarte strepen,
+       witte snuit en wangen, amberkleurige ogen.
+   ================================================================ */
+function tijgerSvg(){
+  // taps toelopende vachtstreep: basis van 2*br breed op (x,y), punt op afstand len, gedraaid over hoek
+  function streep(x,y,len,br,hoek,kleur){
+    return '<path transform="translate('+x+' '+y+') rotate('+hoek+')" fill="'+(kleur||"#241c18")+'" d="'+
+      'M'+(-br)+' 0 Q'+(-br*0.55)+' '+(-len*0.55)+' 0 '+(-len)+' Q'+(br*0.55)+' '+(-len*0.55)+' '+br+' 0 Z"/>';
+  }
+  var s='';
+  // oren: donkere buitenrand met lichte binnenkant
+  [[42,48,-20,1],[158,48,20,-1]].forEach(function(o){
+    s+='<ellipse cx="'+o[0]+'" cy="'+o[1]+'" rx="30" ry="33" transform="rotate('+o[2]+' '+o[0]+' '+o[1]+')" fill="#241c18"/>'+
+       '<ellipse cx="'+(o[0]+o[3]*3)+'" cy="'+(o[1]+7)+'" rx="21" ry="22" transform="rotate('+o[2]+' '+o[0]+' '+o[1]+')" fill="#d4761d"/>'+
+       '<ellipse cx="'+(o[0]+o[3]*5)+'" cy="'+(o[1]+11)+'" rx="11" ry="12" fill="#f7e3cd"/>';
+  });
+  // kop
+  s+='<path d="M100 20c36 0 63 26 66 64 1 13 7 22 4 31-3 10-12 13-16 22-10 23-31 45-54 45s-44-22-54-45c-4-9-13-12-16-22-3-9 3-18 4-31 3-38 30-64 66-64z" fill="#e8862a"/>';
+  // wangvacht die uitsteekt
+  [[36,104,-96],[33,122,-86],[38,140,-72],[164,104,96],[167,122,86],[162,140,72]].forEach(function(t){
+    s+=streep(t[0],t[1],13,11,t[2],"#e8862a");
+  });
+  // lichte snuit en kin
+  s+='<path d="M100 116c24 0 42 15 42 33 0 21-19 37-42 37s-42-16-42-37c0-18 18-33 42-33z" fill="#fbeedd"/>';
+  // witte wenkbrauwvlekken boven de ogen
+  s+='<ellipse cx="72" cy="88" rx="15" ry="9" fill="#fbeedd"/><ellipse cx="128" cy="88" rx="15" ry="9" fill="#fbeedd"/>';
+  // voorhoofdstrepen: breed op de kruin, taps naar de ogen toe
+  s+=streep(100,26,50,5.5,180);
+  s+=streep(88,28,46,5,194)+streep(112,28,46,5,166);
+  s+=streep(74,34,40,5,208)+streep(126,34,40,5,152);
+  s+=streep(61,47,30,4.5,222)+streep(139,47,30,4.5,138);
+  s+=streep(54,66,20,4,232)+streep(146,66,20,4,128);
+  // wangstrepen, naar binnen wijzend
+  s+=streep(42,106,26,5,92)+streep(158,106,26,5,-92);
+  s+=streep(40,124,24,5,102)+streep(160,124,24,5,-102);
+  s+=streep(46,142,20,4.5,116)+streep(154,142,20,4.5,-116);
+  // neusbrug
+  s+='<path d="M92 96q8-6 16 0" fill="none" stroke="#d4761d" stroke-width="3" stroke-linecap="round" opacity=".8"/>';
+  // ogen: amandelvormig met amberkleurige iris
+  [[75,-1],[125,1]].forEach(function(e){
+    var x=e[0], k=e[1];
+    s+='<path d="M'+(x-16)+' 100 C'+(x-12)+' 87 '+(x+12)+' 87 '+(x+16)+' 100 C'+(x+12)+' 112 '+(x-12)+' 112 '+(x-16)+' 100 Z" fill="#fff7ea" stroke="#241c18" stroke-width="3"/>'+
+       '<circle cx="'+x+'" cy="99.5" r="8.6" fill="#dd9d2b"/>'+
+       '<circle cx="'+x+'" cy="99.5" r="8.6" fill="none" stroke="#8a5a12" stroke-width="1.4"/>'+
+       '<circle cx="'+x+'" cy="99.5" r="4.2" fill="#17120f"/>'+
+       '<circle cx="'+(x-3)+'" cy="96.5" r="2.2" fill="#fff" opacity=".9"/>'+
+       // ooghoek naar buiten
+       '<path d="M'+(x+k*16)+' 100 l'+(k*9)+' -3" stroke="#241c18" stroke-width="3" stroke-linecap="round" fill="none"/>';
+  });
+  // neus: breder dan hoog, met vlakke bovenkant
+  s+='<path d="M84 128q16-9 32 0q2 13-16 20q-18-7-16-20z" fill="#c4756c" stroke="#8f4a45" stroke-width="2.2"/>'+
+     '<path d="M92 137q3 3 0 6M108 137q-3 3 0 6" stroke="#6d3a35" stroke-width="3" stroke-linecap="round" fill="none"/>';
+  // mond
+  s+='<path d="M100 148v9M100 157c-7 9-19 8-24 0M100 157c7 9 19 8 24 0" fill="none" stroke="#4a2e22" stroke-width="3.4" stroke-linecap="round"/>';
+  // snorharen en snorpunten
+  s+='<g stroke="#8f6b52" stroke-width="1.7" stroke-linecap="round" opacity=".7" fill="none">'+
+     '<path d="M78 141 38 131M78 147 40 146M78 153 42 161M122 141 162 131M122 147 160 146M122 153 158 161"/></g>'+
+     '<g fill="#a8836a">'+
+     '<circle cx="85" cy="140" r="1.5"/><circle cx="87" cy="147" r="1.5"/><circle cx="86" cy="153" r="1.5"/>'+
+     '<circle cx="115" cy="140" r="1.5"/><circle cx="113" cy="147" r="1.5"/><circle cx="114" cy="153" r="1.5"/></g>';
+  return '<svg viewBox="0 0 200 200" class="tijger">'+s+'</svg>';
+}
+
+/* ================================================================
+   2d. Junglelaag: palmbladeren rond de bladzijde
+   ================================================================ */
+function frond(kleur){
+  var s='<path d="M0 0H210" stroke="'+kleur+'" stroke-width="7" stroke-linecap="round"/>';
+  for(var i=1;i<=7;i++){
+    var x=i*26, len=52-Math.abs(4-i)*6;
+    s+='<path d="M'+x+' 0C'+(x+8)+' -'+len+' '+(x+34)+' -'+len+' '+(x+42)+' -5Z" fill="'+kleur+'"/>'+
+       '<path d="M'+x+' 0C'+(x+8)+' '+len+' '+(x+34)+' '+len+' '+(x+42)+' 5Z" fill="'+kleur+'"/>';
+  }
+  return s;
+}
+function bouwJungle(){
+  var plekken=[[-30,-20,1.5,25],[1230,-30,1.6,155],[-40,830,1.4,-35],[1240,820,1.5,205],
+               [620,-45,1.1,80],[240,845,1.1,-100],[1250,420,1.2,175],[-50,400,1.2,5]];
+  var s="";
+  plekken.forEach(function(f,i){
+    s+='<g transform="translate('+f[0]+' '+f[1]+') rotate('+f[3]+') scale('+f[2]+')" opacity="'+(i%2?.8:.55)+'">'+
+       frond(i%2?"#0b3a21":"#15613a")+'</g>';
+  });
+  document.getElementById("jungle").innerHTML=s;
+}
+
+/* ================================================================
+   3. Geluid (zonder externe bestanden)
+   ================================================================ */
+var Snd=(function(){
+  var ctx=null;
+  function ac(){ if(!ctx){ try{ ctx=new (window.AudioContext||window.webkitAudioContext)(); }catch(e){ ctx=false; } } return ctx; }
+  function toon(f,dur,type,vol,delay){
+    if(!cur||!cur.geluid) return;
+    var c=ac(); if(!c) return;
+    var t0=c.currentTime+(delay||0);
+    var o=c.createOscillator(), g=c.createGain();
+    o.type=type||"sine"; o.frequency.value=f;
+    g.gain.setValueAtTime(0,t0);
+    g.gain.linearRampToValueAtTime(vol||.15,t0+.01);
+    g.gain.exponentialRampToValueAtTime(.001,t0+dur);
+    o.connect(g); g.connect(c.destination); o.start(t0); o.stop(t0+dur+.02);
+  }
+  return {
+    tik:function(){ toon(880,.05,"square",.05); },
+    fout:function(){ toon(150,.22,"sawtooth",.10); },
+    pop:function(){ toon(660,.09,"triangle",.12); toon(990,.09,"triangle",.10,.06); },
+    klaar:function(){ [523,659,784,1047].forEach(function(f,i){ toon(f,.26,"triangle",.13,i*.11); }); },
+    slot:function(){ [392,523,659].forEach(function(f,i){ toon(f,.3,"sine",.13,i*.13); }); }
+  };
+})();
+
+/* ================================================================
+   4. Opslag
+   ================================================================ */
+var KEY="typtijgers_v3", KEY_V2="typtijgers_v2", KEY_V1="typtijgers_v1";
+var db={profielen:[],laatste:null}, cur=null;
+function laad(){
+  try{
+    var s=localStorage.getItem(KEY);
+    if(s){ db=JSON.parse(s); }
+    else{
+      var v2=localStorage.getItem(KEY_V2), v1=localStorage.getItem(KEY_V1);
+      if(v2){ db=JSON.parse(v2); schuifVanaf(13); bewaar(); }        // Letterregen-station 1 erbij
+      else if(v1){ db=JSON.parse(v1); schuifVanaf(0); schuifVanaf(13); bewaar(); }
+    }
+  }catch(e){}
+  if(!db.profielen) db.profielen=[];
+  if(!db.weg) db.weg=[];                                // verwijderde spelers die online nog weg moeten
+  db.profielen.forEach(function(p){
+    vulProfielAan(p);
+    if(typeof p.gewijzigd!=="number") p.gewijzigd=1;    // oud: elke online versie is nieuwer
+    snap[p.id]=zonderTijd(p);
+  });
+}
+// Er is een station bijgekomen op plek `vanaf`; alle lessen vanaf daar schuiven een plaats op.
+function schuifVanaf(vanaf){
+  (db.profielen||[]).forEach(function(p){
+    var n={};
+    Object.keys(p.lessen||{}).forEach(function(k){
+      var i=parseInt(k,10);
+      n[i>=vanaf ? i+1 : i]=p.lessen[k];
+    });
+    p.lessen=n;
+  });
+}
+// zet velden klaar die in een oudere versie nog niet bestonden
+function vulProfielAan(p){
+  if(!p.lessen) p.lessen={};
+  if(!p.badges) p.badges=[];
+  if(!p.feedback) p.feedback={};
+  if(typeof p.record!=="number") p.record=0;
+  if(typeof p.punten!=="number") p.punten=0;          // totaal verdiend, gaat nooit omlaag
+  if(typeof p.besteed!=="number") p.besteed=0;        // uitgegeven in de winkel
+  if(!p.spullen) p.spullen=[];                        // gekochte kleding
+  if(!p.draagt) p.draagt={};                          // wat de tijger aan heeft
+  if(!p.examen) p.examen=null;                        // {wpm, acc, datum, gehaald}
+  if(typeof p.maxCombo!=="number") p.maxCombo=0;
+}
+// Bewaart altijd op dit apparaat. Is iemand ingelogd, dan gaat het daarna ook naar de server.
+// Per speler houden we bij wanneer er iets veranderde (gewijzigd), zodat bij inloggen
+// op een tweede apparaat de nieuwste versie wint.
+var snap={};
+function zonderTijd(p){ return JSON.stringify(p,function(k,v){ return k==="gewijzigd"?undefined:v; }); }
+function bewaar(){
+  (db.profielen||[]).forEach(function(p){
+    var j=zonderTijd(p);
+    if(snap[p.id]!==j){ if(snap[p.id]!==undefined || !p.gewijzigd) p.gewijzigd=Date.now(); snap[p.id]=j; }
+  });
+  try{ localStorage.setItem(KEY,JSON.stringify(db)); }catch(e){}
+  if(typeof Online!=="undefined") Online.plan();
+}
+function nieuwId(){ return "p"+Date.now()+Math.floor(Math.random()*100); }
+
+/* ================================================================
+   5. Schermen
+   ================================================================ */
+var scherm="profielen";
+function ga(naam){
+  scherm=naam;
+  ["profielen","nieuw","menu","vingers","les","resultaat","spel","winkel","diploma","rapport"].forEach(function(n){
+    document.getElementById("sc-"+n).classList.toggle("aan",n===naam);
+  });
+  document.getElementById("profChip").style.display = cur?"flex":"none";
+  document.getElementById("geluidChip").style.display = cur?"flex":"none";
+  if(naam==="profielen") toonProfielen();
+  if(naam==="menu") toonMenu();
+  window.scrollTo(0,0);
+}
+document.addEventListener("click",function(e){
+  var b=e.target.closest("[data-ga]");
+  if(b){ if(b.getAttribute("data-ga")==="profielen") cur=null; ga(b.getAttribute("data-ga")); }
+});
+
+/* ---------- tijgerpunten, rangen en kleding ---------- */
+function saldo(){ return Math.max(0,(cur.punten||0)-(cur.besteed||0)); }
+function rangVan(punten){
+  var r=RANGEN[0];
+  RANGEN.forEach(function(x){ if(punten>=x.punten) r=x; });
+  return r;
+}
+function volgendeRang(punten){
+  for(var i=0;i<RANGEN.length;i++){ if(RANGEN[i].punten>punten) return RANGEN[i]; }
+  return null;
+}
+// de kleding die de tijger aan heeft, als losse laagjes over de tekening
+function kledingLagen(p){
+  var s="";
+  WINKEL.forEach(function(w){
+    if(p.spullen && p.spullen.indexOf(w.id)>=0 && p.draagt && p.draagt[w.id]){
+      s+='<span class="op '+w.plek+'">'+w.ic+'</span>';
+    }
+  });
+  return s;
+}
+function toonPuntbalk(){
+  var pt=saldo(), tot=cur.punten||0, r=rangVan(tot), v=volgendeRang(tot);
+  document.getElementById("puntSaldo").textContent=pt;
+  document.getElementById("rangNaam").textContent=r.ic+" "+r.naam;
+  var breedte=100, rest="Hoogste rang bereikt!";
+  if(v){
+    breedte=Math.round((tot-r.punten)/(v.punten-r.punten)*100);
+    rest="nog "+(v.punten-tot)+" punten tot "+v.naam;
+  }
+  document.getElementById("rangBalk").style.width=breedte+"%";
+  document.getElementById("rangVolgend").textContent=rest;
+}
+
+/* ---------- profielen ---------- */
+function modusInfo(id){
+  id = id || (cur && cur.modus);
+  for(var i=0;i<MODI.length;i++){ if(MODI[i].id===id) return MODI[i]; }
+  return MODI[0];
+}
+function toonProfielen(){
+  var g=document.getElementById("profGrid"); g.innerHTML="";
+  db.profielen.forEach(function(p){
+    var d=document.createElement("div"); d.className="prof";
+    var klaar=Object.keys(p.lessen||{}).length;
+    d.innerHTML='<span class="wis" title="deze speler verwijderen">✕</span>'+
+      '<div class="avatar" style="background:'+p.kleur+'">'+modusInfo(p.modus).ic+kledingLagen(p)+'</div>'+
+      '<div class="naam">'+esc(p.naam)+'</div>'+
+      '<div class="sub">'+klaar+' / '+LESSEN.length+' stappen</div>'+
+      '<div class="sub">'+rangVan(p.punten||0).ic+' '+rangVan(p.punten||0).naam+'</div>';
+    d.onclick=function(){ cur=p; db.laatste=p.id; bewaar(); ga("menu"); };
+    d.querySelector(".wis").onclick=function(e){
+      e.stopPropagation();
+      if(!confirm("Speler "+p.naam+" en alle voortgang verwijderen? Dit kan niet ongedaan worden gemaakt.")) return;
+      db.profielen=db.profielen.filter(function(x){ return x.id!==p.id; });
+      if(db.eigenaar && db.weg.indexOf(p.id)<0) db.weg.push(p.id);   // ook online verwijderen
+      delete snap[p.id];
+      if(cur&&cur.id===p.id) cur=null;
+      bewaar(); toonProfielen();
+    };
+    g.appendChild(d);
+  });
+  var n=document.createElement("div"); n.className="prof nieuw";
+  n.innerHTML='<div class="avatar" style="background:#adb5bd">＋</div><div class="naam">Nieuw</div><div class="sub">maak een speler</div>';
+  n.onclick=function(){ ga("nieuw"); document.getElementById("nieuwNaam").value=""; kiesKleur(0);
+                        gekozenModus="jong"; bouwModusKiezer(); document.getElementById("nieuwNaam").focus(); };
+  g.appendChild(n);
+}
+var gekozenKleur=0;
+function kiesKleur(i){
+  gekozenKleur=i;
+  var k=document.getElementById("kleurKiezer"); k.innerHTML="";
+  KLEUREN.forEach(function(c,j){
+    var d=document.createElement("div"); d.style.background=c;
+    if(j===i) d.className="uit";
+    d.onclick=function(){ kiesKleur(j); };
+    k.appendChild(d);
+  });
+}
+var gekozenModus="jong";
+function bouwModusKiezer(){
+  var d=document.getElementById("modusKiezer"); d.innerHTML="";
+  MODI.forEach(function(m){
+    var l=document.createElement("label");
+    if(m.id===gekozenModus) l.className="uit";
+    l.innerHTML='<span class="ic">'+m.ic+'</span> <b>'+m.naam+'</b>'+
+                '<small class="stil">'+m.uitleg+'</small>';
+    l.onclick=function(){ gekozenModus=m.id; bouwModusKiezer(); };
+    d.appendChild(l);
+  });
+}
+document.getElementById("maakProfiel").onclick=function(){
+  var naam=document.getElementById("nieuwNaam").value.trim();
+  if(!naam){ document.getElementById("nieuwNaam").focus(); return; }
+  cur={id:nieuwId(),naam:naam,kleur:KLEUREN[gekozenKleur],modus:gekozenModus,geluid:true};
+  vulProfielAan(cur);
+  db.profielen.push(cur); db.laatste=cur.id; bewaar(); ga("menu");
+};
+
+/* ---------- chips ---------- */
+function toonChips(){
+  var c=document.getElementById("profChip"), mi=modusInfo();
+  c.innerHTML='<span class="bol" style="background:'+cur.kleur+'"></span>'+esc(cur.naam)+
+    ' <small class="stil">'+mi.ic+' '+mi.naam+'</small>';
+  c.title="Klik om een ander niveau te kiezen";
+  c.onclick=function(){                                  // wissel door de drie niveaus
+    var ids=MODI.map(function(m){ return m.id; });
+    var i=ids.indexOf(cur.modus);
+    cur.modus=ids[(i+1)%ids.length];
+    bewaar(); toonChips(); if(scherm==="menu") toonMenu();
+  };
+  var g=document.getElementById("geluidChip");
+  g.textContent = cur.geluid ? "🔊 Geluid aan" : "🔇 Geluid uit";
+  g.onclick=function(){ cur.geluid=!cur.geluid; bewaar(); toonChips(); };
+}
+
+/* ---------- menu ---------- */
+// index van de eerste les die nog op slot staat (hoogste gehaalde les + 1)
+function hoogsteVrij(){
+  var max=-1;
+  Object.keys(cur.lessen||{}).forEach(function(k){ var i=parseInt(k,10); if(i>max) max=i; });
+  return max+1;
+}
+// index van de eerste les die nog niet gehaald is
+function eersteOpen(){
+  for(var i=0;i<LESSEN.length;i++){ if(!cur.lessen[i]) return i; }
+  return LESSEN.length;
+}
+// eerste index en aantal lessen van een module, plus het lesnummer binnen die module.
+// Spelstations horen bij geen enkele module (mod 0) en krijgen module 0 terug.
+function lesPositie(i){
+  var mod=LESSEN[i].mod, eerste=-1, tot=0;
+  if(!mod) return {mod:0, nr:1, tot:1, eerste:i, naam:"Tussenspel"};
+  LESSEN.forEach(function(L,j){ if(L.mod===mod){ if(eerste<0) eerste=j; tot++; } });
+  return {mod:mod, nr:i-eerste+1, tot:tot, eerste:eerste, naam:MODULES[mod-1].naam};
+}
+function moduleKlaar(nr){
+  for(var i=0;i<LESSEN.length;i++){ if(LESSEN[i].mod===nr && !cur.lessen[i]) return false; }
+  return true;
+}
+// het doel van een spelstation voor het huidige niveau
+function spelDoel(idx){
+  var d=LESSEN[idx].doel||{};
+  return d[cur.modus]||d.oud||15;
+}
+function toonMenu(){
+  toonChips();
+  toonPuntbalk();
+  document.getElementById("menuTitel").textContent="De route van "+cur.naam;
+  var vrij=hoogsteVrij(), open=eersteOpen();
+  document.getElementById("menuTip").innerHTML = vrij===0
+    ? "Begin bij <b>stap 1</b>: daar leer je hoe je vingers heten. Dat heb je de hele route nodig."
+    : (open>=LESSEN.length
+      ? "Wauw, je hebt <b>de hele route</b> gelopen! Je bent een echte typtijger. 🐅"
+      : "Je bent bij <b>"+esc(LESSEN[open].t)+"</b>. Elke stap die je haalt, opent de volgende.");
+  var box=document.getElementById("modules"); box.innerHTML="";
+  var pad=null, vorigeMod=-1;
+  LESSEN.forEach(function(L,i){
+    // bij een nieuwe module eerst een bordje met het verhaal
+    if(L.mod!==vorigeMod){
+      vorigeMod=L.mod;
+      pad=null;
+      if(L.mod>0){
+        var M=MODULES[L.mod-1];
+        var idx=[];
+        LESSEN.forEach(function(X,j){ if(X.mod===M.nr) idx.push(j); });
+        var klaar=idx.filter(function(j){ return cur.lessen[j]; }).length;
+        var kop=document.createElement("div"); kop.className="modkop";
+        kop.innerHTML='<span class="ic">'+M.ic+'</span>'+
+          '<div><div class="tt">Module '+M.nr+': '+M.naam+'</div>'+
+          '<div class="sub">'+M.sub+'</div>'+
+          '<div class="verhaal">'+M.verhaal+'</div></div>'+
+          '<span class="telling">'+klaar+' / '+idx.length+'</span>';
+        box.appendChild(kop);
+        if(idx[0]>vrij){                                 // hele module zit nog op slot
+          var slot=document.createElement("div"); slot.className="modslot";
+          slot.innerHTML="🔒 Deze module gaat open als je de stappen ervoor hebt gehaald. Nog <b>"+
+                         (idx[0]-vrij)+"</b> te gaan.";
+          box.appendChild(slot);
+        }
+      }
+    }
+    var opSlot = i>vrij;
+    if(opSlot && L.mod>0 && lesPositie(i).eerste>vrij) return;   // module-slot al gemeld
+    if(!pad){ pad=document.createElement("div"); pad.className="pad"; box.appendChild(pad); }
+
+    var res=cur.lessen[i], isSpel=L.type==="spel", isExamen=L.type==="examen";
+    var d=document.createElement("div");
+    d.className="stap"+(res?" klaar":"")+(opSlot?" slot":"")+(i===open&&!opSlot?" nu":"")+
+               (isSpel?" spel":"")+(isExamen?" examen":"");
+    var bolTekst = opSlot ? "🔒" : (isSpel ? "🎮" : (isExamen ? "🏆" : (res?"✓":String(i+1))));
+    var onder = isSpel
+      ? "haal "+spelDoel(i)+" punten"
+      : esc(L.label || (L.nieuw && L.nieuw.length ? L.nieuw.join(" ") : "alles"));
+    d.innerHTML='<div class="bol">'+bolTekst+'</div>'+
+      '<div class="kaartje"><div class="tt">'+esc(L.t)+
+        (i===open&&!opSlot?'<span class="hiernu">jij bent hier</span>':'')+'</div>'+
+        '<div class="sub">'+onder+'</div>'+
+        '<div class="sterren">'+sterrenTekst(res?res.sterren:0)+'</div></div>';
+    if(!opSlot){
+      d.querySelector(".bol").onclick=function(){ startLes(i); };
+      d.querySelector(".kaartje").onclick=function(){ startLes(i); };
+    }
+    pad.appendChild(d);
+  });
+  var b=document.getElementById("badgeLijst"); b.innerHTML="";
+  BADGES.forEach(function(x){
+    var d=document.createElement("div");
+    d.className="badge"+(cur.badges.indexOf(x.id)>=0?" gehaald":"");
+    d.innerHTML='<span class="ic">'+x.ic+'</span>'+x.naam;
+    b.appendChild(d);
+  });
+  document.getElementById("spelRecord").textContent=cur.record||0;
+  document.getElementById("diplomaKnop").style.display =
+    (cur.examen && cur.examen.gehaald) ? "inline-block" : "none";
+}
+function sterrenTekst(n){ return "★★★".slice(0,n)+"☆☆☆".slice(0,3-n); }
+
+/* ================================================================
+   6. De les
+   ================================================================ */
+var kbLes=null, kbUit=null, lesHanden=null;
+var les=null;
+function startLes(idx){
+  if(LESSEN[idx].type==="vingers"){ startVingerLes(idx); return; }
+  if(LESSEN[idx].type==="spel"){ startSpelStation(idx); return; }
+  var L=LESSEN[idx], p=lesPositie(idx);
+  var items=(L[cur.modus]||L.oud).slice();
+  var doel=(DOEL_WPM[cur.modus]||{})[p.mod]||0;
+  les={idx:idx,type:(L.type==="examen"?"examen":"typen"),items:items,i:0,pos:0,fout:0,goed:0,start:0,
+       bezig:false,doel:doel,combo:0,maxCombo:0,
+       // de vinger groot benoemen: bij Aapje altijd, bij Panter in de eerste zes lessen
+       vingerPaneel: cur.modus==="jong" || (cur.modus==="oud" && p.mod===1 && p.nr<=6)};
+  document.getElementById("lesNr").textContent="Module "+p.mod+": "+p.naam+" - les "+p.nr+" van "+p.tot;
+  document.getElementById("lesTitel").textContent=L.t;
+  document.getElementById("mTotaal").textContent=items.length;
+  document.getElementById("wpmVak").style.display = cur.modus==="jong"?"none":"block";
+  document.getElementById("doelVak").style.display = doel?"block":"none";
+  document.getElementById("mDoel").textContent=doel;
+  ga("les");
+  toonChips();
+  if(!kbLes) kbLes=bouwToetsenbord(document.getElementById("kbLes"));
+  if(!lesHanden) lesHanden=bouwHanden(document.getElementById("lesHanden"),{});
+  bouwLegenda(document.getElementById("legenda2"));
+  tekenItem();
+}
+function huidigItem(){ return les.items[les.i]; }
+function tekenItem(){
+  var el=document.getElementById("opdracht");
+  el.className="opdracht"+(cur.modus==="jong"?" jong":"");
+  el.innerHTML="";
+  var s=huidigItem();
+  for(var i=0;i<s.length;i++){
+    var sp=document.createElement("span");
+    var c=s.charAt(i);
+    sp.className="ch"+(c===" "?" sp":"")+(i<les.pos?" goed":"")+(i===les.pos?" nu":"");
+    sp.textContent = c===" " ? "␣" : c;
+    el.appendChild(sp);
+  }
+  document.getElementById("mItem").textContent=les.i+1;
+  document.getElementById("lesBalk").style.width=((les.i+les.pos/Math.max(s.length,1))/les.items.length*100)+"%";
+  tekenHint(s.charAt(les.pos));
+  updateMeters();
+}
+function tekenHint(ch){
+  // toetsenbord opschonen
+  Object.keys(kbLes).forEach(function(k){
+    var m=kbLes[k];
+    if(k.indexOf("__shift")===0){ m.classList.remove("shifttoets"); }
+    else if(m&&m.el){ m.el.classList.remove("volgende"); }
+  });
+  var m=kbLes[ch];
+  var h=document.getElementById("hint");
+  if(!m){ h.textContent=""; return; }
+  m.el.classList.add("volgende");
+  var vinger=V[m.v]?V[m.v].n:"";
+  var tekst = ch===" " ? "Duw met je <b>duim</b> op de spatiebalk" : 'Gebruik je <b style="background:'+(V[m.v]?V[m.v].c:"#eee")+'">'+vinger+"</b>";
+  if(m.shift){
+    var links = m.v && m.v.charAt(0)==="l";
+    var sh = kbLes[links?"__shiftR":"__shiftL"];
+    if(sh) sh.classList.add("shifttoets");
+    tekst += ' + houd <b style="background:#a5d8ff">Shift</b> vast met je '+(links?"rechterpink":"linkerpink");
+  }
+  h.innerHTML=tekst;
+  tekenVingerPaneel(ch,m);
+}
+// groot paneel met de handen en de naam van de vinger, voor de eerste lessen
+function tekenVingerPaneel(ch,m){
+  var paneel=document.getElementById("vpaneel");
+  if(!les.vingerPaneel || !m){ paneel.style.display="none"; return; }
+  paneel.style.display="flex";
+  zetHand(lesHanden,m.v);
+  var naam=V[m.v]?V[m.v].n:"";
+  var onder = ch===" " ? "Duw met een duim op de spatiebalk."
+            : (m.shift ? "Houd Shift vast met de pink van je andere hand."
+                       : "Zet hem daarna weer terug op de thuisrij.");
+  document.getElementById("lesVnaam").innerHTML =
+    naam.charAt(0).toUpperCase()+naam.slice(1)+"<small>"+onder+"</small>";
+}
+function updateMeters(){
+  var tot=les.goed+les.fout;
+  document.getElementById("mAcc").textContent = (tot? Math.round(les.goed/tot*100):100)+"%";
+  document.getElementById("mFout").textContent=les.fout;
+  if(cur.modus!=="jong" && les.start){
+    var min=(Date.now()-les.start)/60000;
+    document.getElementById("mWpm").textContent = min>0.02 ? Math.round((les.goed/5)/min) : 0;
+  }
+}
+// de combo-teller: hoeveel goede aanslagen op een rij
+function tekenCombo(){
+  var chip=document.getElementById("comboChip");
+  document.getElementById("comboN").textContent=les.combo;
+  chip.classList.toggle("aan",les.combo>=5);
+  chip.classList.toggle("heet",les.combo>=20);
+}
+function lesToets(ch){
+  if(les.bezig) return;
+  var s=huidigItem(), verwacht=s.charAt(les.pos);
+  if(ch===verwacht){
+    if(!les.start) les.start=Date.now();
+    les.goed++; les.pos++;
+    les.combo++;
+    if(les.combo>les.maxCombo) les.maxCombo=les.combo;
+    if(les.combo===10||les.combo===25||les.combo===50) Snd.pop();
+    tekenCombo();
+    Snd.tik();
+    if(les.pos>=s.length){
+      les.bezig=true;
+      var spans=document.getElementById("opdracht").children;
+      if(spans[les.pos-1]){ spans[les.pos-1].className="ch goed"; }
+      Snd.pop();
+      setTimeout(function(){
+        les.i++; les.pos=0; les.bezig=false;
+        if(les.i>=les.items.length) klaarMetLes(); else tekenItem();
+      },260);
+      updateMeters();
+      return;
+    }
+    tekenItem();
+  } else {
+    les.fout++;
+    les.combo=0;                                         // combo breekt bij een foutje
+    tekenCombo();
+    Snd.fout();
+    var el=document.getElementById("opdracht");
+    var sp=el.children[les.pos];
+    if(sp){ sp.classList.add("fout"); setTimeout(function(){ sp.classList.remove("fout"); },220); }
+    el.classList.add("schud"); setTimeout(function(){ el.classList.remove("schud"); },250);
+    updateMeters();
+  }
+}
+function klaarMetLes(){
+  var tot=les.goed+les.fout;
+  var acc = tot? Math.round(les.goed/tot*100) : 100;
+  var ms = les.start? (Date.now()-les.start) : 0;
+  var sec = Math.round(ms/1000);
+  var wpm = (les.type==="vingers"||ms<=500) ? 0 : Math.round((les.goed/5)/(ms/60000));
+  var doel = les.doel||0;
+  var opTijd = (doel===0 || wpm>=doel);                  // derde ster vraagt ook snelheid
+  var sterren = acc>=95 ? (opTijd?3:2) : (acc>=85 ? 2 : 1);
+  var oud = cur.lessen[les.idx];
+  var eersteKeer = !oud;
+  cur.lessen[les.idx]={
+    sterren: Math.max(sterren, oud?oud.sterren:0),
+    acc: Math.max(acc, oud?oud.acc:0),
+    wpm: Math.max(wpm, oud?oud.wpm:0)
+  };
+  // het eindexamen kent zijn eigen norm; halen levert het diploma op
+  var norm = EXAMEN_NORM[cur.modus]||EXAMEN_NORM.oud;
+  var examenGehaald = false;
+  if(les.type==="examen"){
+    examenGehaald = (acc>=norm.acc && wpm>=norm.wpm);
+    if(examenGehaald && (!cur.examen || !cur.examen.gehaald)){
+      cur.examen={wpm:wpm,acc:acc,datum:vandaag(),gehaald:true};
+    }
+  }
+  // tijgerpunten: sterren, netjes typen en een lange combo leveren op.
+  // De combobonus zit op 15 punten dicht, anders overschaduwt hij de rest.
+  var punten = sterren*10 + (acc>=95?5:0) + Math.min(15,Math.floor((les.maxCombo||0)/4));
+  cur.punten=(cur.punten||0)+punten;
+  if((les.maxCombo||0)>(cur.maxCombo||0)) cur.maxCombo=les.maxCombo;
+
+  // medailles
+  var nieuw=[];
+  function geef(id){ if(cur.badges.indexOf(id)<0){ cur.badges.push(id); nieuw.push(id); } }
+  geef("eerste");
+  if(cur.lessen[4]) geef("thuisrij");
+  if(les.fout===0) geef("perfect");
+  var drie=0; for(var k in cur.lessen){ if(cur.lessen[k].sterren===3) drie++; }
+  if(drie>=5) geef("drie");
+  if(cur.lessen[9]) geef("alfabet");
+  if((les.maxCombo||0)>=25) geef("combo");
+  if(moduleKlaar(1)) geef("beginner");
+  if(moduleKlaar(3)) geef("sneller");
+  if(moduleKlaar(4)) geef("meester");
+  if(cur.lessen[21]) geef("gek");                        // les 'Gekke woorden' uit module 2
+  if(examenGehaald) geef("diploma");
+  if(Object.keys(cur.lessen).length>=LESSEN.length) geef("kampioen");
+  bewaar();
+
+  document.getElementById("resKop").textContent = sterren===3 ? "Perfect gedaan!" : (sterren===2?"Goed gedaan!":"Klaar!");
+  document.getElementById("resSterren").textContent=sterrenTekst(sterren);
+  document.getElementById("resAcc").textContent=acc+"%";
+  document.getElementById("resAccLabel").textContent="goed getypt";
+  document.getElementById("resTijd").textContent=sec+"s";
+  document.getElementById("resTijdLabel").textContent="tijd";
+  document.getElementById("resWpmVak").style.display = (cur.modus!=="jong" && les.type!=="vingers")?"block":"none";
+  document.getElementById("resWpm").textContent=wpm;
+  document.getElementById("resPunten").textContent="+"+punten+" tijgerpunten 🐾"+
+    ((les.maxCombo||0)>=10 ? "   (langste reeks: "+les.maxCombo+" 🔥)" : "");
+  var tips=["Blijf naar het scherm kijken, niet naar je handen.","Rustig typen met weinig fouten is beter dan snel met veel fouten.","Zet je vingers na elke letter terug op de thuisrij.","Zit rechtop met beide voeten op de grond."];
+  var grappig=["Zelfs de zeurzebra is jaloers. 🦓","De sokkenmonsters juichen onder je bed. 🧦","Een aap in de boom klapt voor je. 🐒","De tandpastatijger geeft je een high five. 🐅"];
+  document.getElementById("resTekst").innerHTML = les.type==="examen"
+    ? (examenGehaald
+      ? "<b>Gefeliciteerd, je bent geslaagd!</b> Je diploma staat voor je klaar."
+      : "Nog niet gehaald: je moet <b>"+norm.wpm+" wpm</b> halen met minstens <b>"+norm.acc+"% goed</b>. "+
+        "Je had "+wpm+" wpm en "+acc+"% goed. Je mag zo vaak opnieuw als je wilt!")
+    : (les.type==="vingers"
+      ? "Je kent nu de namen van je vingers. Bij elke volgende les staat erbij welke vinger je moet gebruiken - zeg de naam hardop!"
+      : (acc>=95 && !opTijd
+        ? "Netjes getypt, bijna geen foutjes! Nu nog een tikje sneller: haal <b>"+doel+" wpm</b> voor drie sterren."
+        : (sterren===3
+          ? grappig[Math.floor(Math.random()*grappig.length)]
+          : "Tip: "+tips[Math.floor(Math.random()*tips.length)])));
+  toonNieuweBadges(nieuw);
+  var vol=document.getElementById("resVolgende");
+  if(examenGehaald){
+    vol.style.display="inline-block";
+    vol.textContent="🎓 Naar je diploma";
+    vol.onclick=function(){ toonDiploma(); };
+  } else {
+    vol.textContent="Volgende →";
+    vol.style.display = les.idx+1<LESSEN.length ? "inline-block":"none";
+    vol.onclick=function(){ startLes(les.idx+1); };
+  }
+  document.getElementById("resOpnieuw").onclick=function(){ startLes(les.idx); };
+  ga("resultaat");
+  if(sterren===3) Snd.klaar(); else Snd.slot();
+  if(sterren>=2) confetti(sterren===3?70:40);
+  if(eersteKeer && les.idx+1<LESSEN.length) setTimeout(function(){ Snd.slot(); },600);
+  // module af? dan eenmalig om feedback vragen
+  var mod=LESSEN[les.idx].mod;
+  cur.feedback=cur.feedback||{};
+  if(eersteKeer && moduleKlaar(mod) && !cur.feedback[mod]){
+    setTimeout(function(){ toonFeedback(mod); },1600);
+  }
+}
+document.getElementById("stopLes").onclick=function(){ ga("menu"); };
+
+/* ================================================================
+   6b. Les 1: ken je vingers (aanwijzen met de muis)
+   ================================================================ */
+var kbVg=null, vgHanden=null;
+function startVingerLes(idx){
+  var items=(VINGERVRAGEN[cur.modus]||VINGERVRAGEN.oud).slice(), p=lesPositie(idx);
+  les={idx:idx,type:"vingers",items:items,i:0,fout:0,goed:0,start:Date.now(),bezig:false,doel:0};
+  document.getElementById("vgNr").textContent="Module "+p.mod+": "+p.naam+" - les "+p.nr+" van "+p.tot;
+  document.getElementById("vgTitel").textContent=LESSEN[idx].t;
+  document.getElementById("vgTotaal").textContent=items.length;
+  ga("vingers");
+  toonChips();
+  if(!kbVg) kbVg=bouwToetsenbord(document.getElementById("kbVingers"));
+  if(!vgHanden) vgHanden=bouwHanden(document.getElementById("vgHanden"),{klik:vingerKlik});
+  tekenVraag();
+}
+function juisteVinger(vr){ return vr.v || TOETS_VINGER[vr.toets]; }
+function tekenVraag(){
+  var vr=les.items[les.i];
+  document.getElementById("vgVraag").innerHTML = vr.v
+    ? "Waar is je <em>"+V[vr.v].n+"</em>? Klik erop."
+    : "Welke vinger gebruik je voor de <em>"+(vr.toets===" "?"spatiebalk":vr.toets.toUpperCase())+"</em>? Klik erop.";
+  document.getElementById("vgMelding").innerHTML="&nbsp;";
+  document.getElementById("vgItem").textContent=les.i+1;
+  document.getElementById("vgBalk").style.width=(les.i/les.items.length*100)+"%";
+  zetHand(vgHanden,null);
+  // bij een toetsvraag de toets op het toetsenbord laten oplichten
+  Object.keys(kbVg).forEach(function(k){ if(kbVg[k]&&kbVg[k].el) kbVg[k].el.classList.remove("volgende"); });
+  if(vr.toets && kbVg[vr.toets]) kbVg[vr.toets].el.classList.add("volgende");
+  vgMeters();
+}
+function vgMeters(){
+  var tot=les.goed+les.fout;
+  document.getElementById("vgAcc").textContent=(tot?Math.round(les.goed/tot*100):100)+"%";
+  document.getElementById("vgFout").textContent=les.fout;
+}
+function vingerKlik(v){
+  if(!les || les.type!=="vingers" || les.bezig) return;
+  var vr=les.items[les.i];
+  if(v===juisteVinger(vr)){
+    les.goed++; les.bezig=true;
+    vgHanden[v].forEach(function(e){ e.classList.add("goed"); });
+    Snd.pop();
+    document.getElementById("vgMelding").innerHTML="Ja! Dat is je <b>"+V[v].n+"</b> 👍";
+    vgMeters();
+    setTimeout(function(){
+      les.i++; les.bezig=false;
+      if(les.i>=les.items.length) klaarMetLes(); else tekenVraag();
+    },950);
+  } else {
+    les.fout++;
+    Snd.fout();
+    var geklikt=vgHanden[v];
+    geklikt.forEach(function(e){ e.classList.add("mis"); });
+    var h=document.getElementById("vgHanden");
+    h.classList.add("schud"); setTimeout(function(){ h.classList.remove("schud"); },250);
+    document.getElementById("vgMelding").innerHTML="Dit is je <b>"+V[v].n+"</b>. Zoek je "+
+      (vr.v ? V[vr.v].n : "vinger voor de "+vr.toets.toUpperCase())+".";
+    setTimeout(function(){ geklikt.forEach(function(e){ e.classList.remove("mis"); }); },800);
+    vgMeters();
+  }
+}
+document.getElementById("vgStop").onclick=function(){ ga("menu"); };
+
+/* ================================================================
+   6c. Winkel, diploma en rapport
+   ================================================================ */
+function vandaag(){
+  var d=new Date();
+  return d.getDate()+"-"+(d.getMonth()+1)+"-"+d.getFullYear();
+}
+function toonNieuweBadges(nieuw){
+  var nb=document.getElementById("resNieuweBadges"); nb.innerHTML="";
+  if(!nieuw || !nieuw.length) return;
+  var h=document.createElement("div"); h.innerHTML="<h3>Nieuwe medaille!</h3>"; nb.appendChild(h);
+  var r=document.createElement("div"); r.className="badges"; r.style.justifyContent="center";
+  nieuw.forEach(function(id){
+    var x=BADGES.filter(function(b){ return b.id===id; })[0];
+    if(!x) return;
+    var d=document.createElement("div"); d.className="badge gehaald";
+    d.innerHTML='<span class="ic">'+x.ic+'</span>'+x.naam; r.appendChild(d);
+  });
+  nb.appendChild(r);
+}
+/* ---------- de junglewinkel ---------- */
+function toonWinkel(){
+  ga("winkel");
+  document.getElementById("winkelSaldo").textContent=saldo();
+  document.getElementById("winkelNaam").textContent=cur.naam;
+  var t=document.getElementById("winkelTijger");
+  t.innerHTML=tijgerSvg()+kledingLagen(cur);
+  var g=document.getElementById("winkelGrid"); g.innerHTML="";
+  WINKEL.forEach(function(w){
+    var bezit=cur.spullen.indexOf(w.id)>=0, kanNiet=!bezit && saldo()<w.prijs;
+    var d=document.createElement("div");
+    d.className="spul"+(bezit?" bezit":"")+(kanNiet?" tekort":"");
+    d.innerHTML='<span class="ic">'+w.ic+'</span><div class="naam">'+w.naam+'</div>'+
+      '<div class="prijs">'+(bezit ? (cur.draagt[w.id]?"je hebt hem aan":"in je rugzak") : w.prijs+" 🐾")+'</div>'+
+      '<button class="knop '+(bezit?"grijs":"groen")+' klein">'+
+        (bezit ? (cur.draagt[w.id]?"Uitdoen":"Aandoen") : (kanNiet?"Te duur":"Kopen"))+'</button>';
+    d.querySelector("button").onclick=function(){
+      if(bezit){
+        cur.draagt[w.id]=!cur.draagt[w.id];
+      } else {
+        if(saldo()<w.prijs){ Snd.fout(); return; }
+        cur.spullen.push(w.id);
+        cur.besteed=(cur.besteed||0)+w.prijs;
+        cur.draagt[w.id]=true;
+        if(cur.badges.indexOf("koopman")<0) cur.badges.push("koopman");
+        Snd.klaar(); confetti(30);
+      }
+      bewaar(); toonWinkel();
+    };
+    g.appendChild(d);
+  });
+}
+/* ---------- het diploma ---------- */
+function toonDiploma(){
+  ga("diploma");
+  var e=cur.examen||{};
+  var r=rangVan(cur.punten||0);
+  var sterren=0; for(var k in cur.lessen) sterren+=cur.lessen[k].sterren||0;
+  document.getElementById("diplomaBlad").innerHTML=
+    '<div style="font-size:2.6rem">🎓</div>'+
+    '<h2>Typdiploma</h2>'+
+    '<p style="margin:0">Hierbij verklaart Typtijgers dat</p>'+
+    '<div class="naam">'+esc(cur.naam)+'</div>'+
+    '<p style="margin:0">blind heeft leren typen op een Nederlands toetsenbord</p>'+
+    '<div class="cijfers">'+
+      '<div><b>'+(e.wpm||0)+'</b><small>woorden per minuut</small></div>'+
+      '<div><b>'+(e.acc||0)+'%</b><small>goed getypt</small></div>'+
+      '<div><b>'+sterren+'</b><small>sterren verdiend</small></div>'+
+    '</div>'+
+    '<p style="margin:6px 0">Rang: <b>'+r.ic+' '+r.naam+'</b></p>'+
+    '<p class="stil" style="margin:10px 0 0">Afgegeven op '+(e.datum||vandaag())+' - niveau '+modusInfo().naam+'</p>';
+}
+document.getElementById("diplomaPrint").onclick=function(){ window.print(); };
+/* ---------- rapport voor de ouders ---------- */
+function toonRapport(){
+  ga("rapport");
+  var rijen="", totSter=0, gedaan=0, besteWpm=0, somAcc=0, nAcc=0;
+  LESSEN.forEach(function(L,i){
+    var res=cur.lessen[i];
+    if(res){
+      gedaan++; totSter+=res.sterren||0;
+      if(res.wpm>besteWpm) besteWpm=res.wpm;
+      if(res.acc){ somAcc+=res.acc; nAcc++; }
+    }
+    var p=lesPositie(i);
+    rijen+='<tr><td>'+(i+1)+'</td><td>'+(L.mod?"Module "+L.mod:"Tussenspel")+'</td><td>'+esc(L.t)+'</td>'+
+      '<td class="mid">'+(res?sterrenTekst(res.sterren):"-")+'</td>'+
+      '<td class="mid">'+(res&&res.acc?res.acc+"%":"-")+'</td>'+
+      '<td class="mid">'+(res&&res.wpm?res.wpm:"-")+'</td></tr>';
+  });
+  var e=cur.examen;
+  document.getElementById("rapportInhoud").innerHTML=
+    '<h2 style="margin:0 0 2px">Rapport van '+esc(cur.naam)+'</h2>'+
+    '<p class="stil" style="margin:0 0 12px">Niveau '+modusInfo().naam+' - '+vandaag()+'</p>'+
+    '<div class="cijfers" style="display:flex;gap:14px;flex-wrap:wrap;margin-bottom:14px">'+
+      '<div><b>'+gedaan+' / '+LESSEN.length+'</b><br><small>stappen gedaan</small></div>'+
+      '<div><b>'+totSter+'</b><br><small>sterren</small></div>'+
+      '<div><b>'+(nAcc?Math.round(somAcc/nAcc):0)+'%</b><br><small>gemiddeld goed</small></div>'+
+      '<div><b>'+besteWpm+'</b><br><small>hoogste wpm</small></div>'+
+      '<div><b>'+(cur.punten||0)+'</b><br><small>tijgerpunten</small></div>'+
+      '<div><b>'+rangVan(cur.punten||0).naam+'</b><br><small>rang</small></div>'+
+    '</div>'+
+    (e&&e.gehaald ? '<p><b>Diploma gehaald op '+e.datum+'</b> met '+e.wpm+' wpm en '+e.acc+'% goed.</p>' : '')+
+    '<table><thead><tr><th>#</th><th>Onderdeel</th><th>Titel</th>'+
+    '<th class="mid">Sterren</th><th class="mid">Goed</th><th class="mid">Wpm</th></tr></thead>'+
+    '<tbody>'+rijen+'</tbody></table>';
+}
+document.getElementById("rapportPrint").onclick=function(){ window.print(); };
+
+function confetti(n){
+  var box=document.getElementById("confetti");
+  for(var i=0;i<n;i++){
+    var d=document.createElement("div"); d.className="snip";
+    d.style.left=Math.random()*100+"%";
+    d.style.background=KLEUREN[Math.floor(Math.random()*KLEUREN.length)];
+    d.style.animationDuration=(1.6+Math.random()*1.6)+"s";
+    d.style.animationDelay=(Math.random()*.5)+"s";
+    box.appendChild(d);
+    setTimeout(function(el){ return function(){ el.remove(); }; }(d),3800);
+  }
+}
+
+/* ================================================================
+   7. Spel: Letterregen
+   ================================================================ */
+var spel=null, spelStation=null;                         // spelStation = index van het station, of null bij vrij spelen
+function spelLetters(){
+  var vrij=Math.max(hoogsteVrij(),5);
+  var set={};
+  for(var i=0;i<vrij && i<LESSEN.length;i++){
+    (LESSEN[i].nieuw||[]).forEach(function(k){ if(k.length===1 && k!==" " && /[a-z0-9]/.test(k)) set[k]=1; });
+  }
+  var arr=Object.keys(set);
+  return arr.length?arr:["f","j","d","k"];
+}
+function startSpel(){
+  var arena=document.getElementById("arena"); arena.innerHTML="";
+  spel={letters:spelLetters(),vallend:[],levens:3,score:0,laatst:0,interval:1500,timer:null,loopt:true};
+  document.getElementById("spelStartRij").style.display="none";
+  document.getElementById("spelUitleg").textContent = spelStation!==null
+    ? "Haal "+spelDoel(spelStation)+" punten voor drie sterren!"
+    : "Typ de letter voordat hij de bodem raakt!";
+  tekenSpelStatus();
+  spel.vorigeTijd=Date.now();
+  spel.timer=setInterval(stapSpel,16);
+  stapSpel();
+}
+/* ---------- Letterregen als station tussen twee modules ---------- */
+function startSpelStation(idx){
+  spelStation=idx;
+  var doel=spelDoel(idx);
+  ga("spel"); toonChips();
+  document.getElementById("spelTitel").textContent="🎮 "+LESSEN[idx].t;
+  document.getElementById("spelDoelVak").style.display="block";
+  document.getElementById("spelDoel").textContent=doel;
+  document.getElementById("arena").innerHTML="";
+  document.getElementById("spelStartRij").style.display="flex";
+  document.getElementById("spelStart").textContent="Start!";
+  document.getElementById("spelUitleg").innerHTML="Tussen twee modules door: <b>Letterregen</b>. "+
+    "Typ de vallende letters voordat ze de bodem raken. Haal <b>"+doel+" punten</b> voor drie sterren.";
+  stopLoop(); spel=null;
+  document.getElementById("spelScore").textContent="0";
+  document.getElementById("spelLevens").textContent="❤️❤️❤️";
+  document.getElementById("spelRecord").textContent=cur.record||0;
+}
+// een station afronden: sterren, punten en door naar het resultaatscherm
+function spelStationKlaar(score){
+  var idx=spelStation, doel=spelDoel(idx);
+  var sterren = score>=doel ? 3 : (score>=Math.ceil(doel*0.7) ? 2 : 1);
+  var oud=cur.lessen[idx];
+  cur.lessen[idx]={sterren:Math.max(sterren,oud?oud.sterren:0),acc:0,wpm:0,score:Math.max(score,oud&&oud.score||0)};
+  var punten=score+sterren*10;
+  cur.punten=(cur.punten||0)+punten;
+  var nieuw=[];
+  if(score>=20 && cur.badges.indexOf("spel")<0){ cur.badges.push("spel"); nieuw.push("spel"); }
+  bewaar();
+  les={idx:idx,type:"spel"};                             // zodat de knoppen op het resultaatscherm werken
+  document.getElementById("resKop").textContent = sterren===3 ? "Station gehaald!" : "Klaar!";
+  document.getElementById("resSterren").textContent=sterrenTekst(sterren);
+  document.getElementById("resAcc").textContent=score;
+  document.getElementById("resAccLabel").textContent="punten";
+  document.getElementById("resTijd").textContent=doel;
+  document.getElementById("resTijdLabel").textContent="doel";
+  document.getElementById("resWpmVak").style.display="none";
+  document.getElementById("resPunten").textContent="+"+punten+" tijgerpunten 🐾";
+  document.getElementById("resTekst").innerHTML = sterren===3
+    ? "Alle letters gepakt die je nodig had. De volgende module staat open!"
+    : "Je mag verder, maar je kunt dit station altijd nog eens spelen voor drie sterren.";
+  toonNieuweBadges(nieuw);
+  var vol=document.getElementById("resVolgende");
+  vol.style.display = idx+1<LESSEN.length ? "inline-block":"none";
+  vol.onclick=function(){ startLes(idx+1); };
+  document.getElementById("resOpnieuw").onclick=function(){ startLes(idx); };
+  ga("resultaat");
+  if(sterren===3){ Snd.klaar(); confetti(70); } else Snd.slot();
+}
+function stopLoop(){
+  if(spel&&spel.timer){ clearInterval(spel.timer); spel.timer=null; }
+}
+function tekenSpelStatus(){
+  document.getElementById("spelScore").textContent=spel?spel.score:0;
+  var lev = spel? Math.max(spel.levens,0) : 3;
+  document.getElementById("spelLevens").textContent = "❤️".repeat(lev)+"🤍".repeat(3-lev);
+  document.getElementById("spelRecord").textContent=cur.record||0;
+}
+function stapSpel(){
+  if(!spel||!spel.loopt){ stopLoop(); return; }
+  var nu=Date.now(), dt=Math.min(nu-spel.vorigeTijd,60); spel.vorigeTijd=nu;
+  var arena=document.getElementById("arena");
+  var hoogte=arena.clientHeight;
+  if(nu-spel.laatst > spel.interval){
+    spel.laatst=nu;
+    var ch=spel.letters[Math.floor(Math.random()*spel.letters.length)];
+    var el=document.createElement("div"); el.className="valletter"; el.textContent=ch;
+    el.style.left=(6+Math.random()*80)+"%"; el.style.top="-10px";
+    arena.appendChild(el);
+    // start rustig (~5 seconden vallen) en wordt langzaam sneller (~2 seconden)
+    spel.vallend.push({ch:ch,y:-10,el:el,snelheid:0.008+Math.min(spel.score,50)*0.00025});
+    spel.interval=Math.max(900,2600-spel.score*30);
+  }
+  for(var i=spel.vallend.length-1;i>=0;i--){
+    var v=spel.vallend[i];
+    v.y += v.snelheid*dt*10;
+    v.el.style.top=v.y+"px";
+    if(v.y>hoogte-24){
+      v.el.remove(); spel.vallend.splice(i,1);
+      spel.levens--; Snd.fout(); tekenSpelStatus();
+      if(spel.levens<=0){ eindeSpel(); return; }
+    }
+  }
+}
+function spelToets(ch){
+  if(!spel||!spel.loopt) return;
+  var beste=-1, besteY=-Infinity;
+  for(var i=0;i<spel.vallend.length;i++){
+    if(spel.vallend[i].ch===ch && spel.vallend[i].y>besteY){ beste=i; besteY=spel.vallend[i].y; }
+  }
+  if(beste>=0){
+    var v=spel.vallend[beste];
+    v.el.style.transition="transform .15s, opacity .15s";
+    v.el.style.transform="scale(1.8)"; v.el.style.opacity="0";
+    setTimeout(function(el){ return function(){ el.remove(); }; }(v.el),160);
+    spel.vallend.splice(beste,1);
+    spel.score++; Snd.pop(); tekenSpelStatus();
+  } else { Snd.fout(); }
+}
+function bewaarScore(){
+  if(!spel) return false;
+  var nieuwRecord = spel.score>(cur.record||0);
+  if(nieuwRecord) cur.record=spel.score;
+  if(spel.score>=20 && cur.badges.indexOf("spel")<0) cur.badges.push("spel");
+  bewaar();
+  return nieuwRecord;
+}
+function eindeSpel(){
+  spel.loopt=false;
+  stopLoop();
+  spel.vallend.forEach(function(v){ v.el.remove(); });
+  spel.vallend=[];
+  var score=spel.score;
+  var nieuwRecord = bewaarScore();
+  tekenSpelStatus();
+  if(spelStation!==null){ spelStationKlaar(score); return; }   // station: door naar het resultaatscherm
+  document.getElementById("spelUitleg").innerHTML = "Game over! Je hebt <b>"+score+"</b> punten."+(nieuwRecord?" Dat is een nieuw record! 🏆":"");
+  document.getElementById("spelStartRij").style.display="flex";
+  document.getElementById("spelStart").textContent="Nog een keer!";
+  if(nieuwRecord) confetti(45);
+}
+document.getElementById("spelKnop").onclick=function(){
+  spelStation=null;                                      // vrij spelen, geen station
+  ga("spel"); toonChips();
+  document.getElementById("spelTitel").textContent="🎮 Letterregen";
+  document.getElementById("spelDoelVak").style.display="none";
+  document.getElementById("arena").innerHTML="";
+  document.getElementById("spelStartRij").style.display="flex";
+  document.getElementById("spelStart").textContent="Start!";
+  document.getElementById("spelUitleg").textContent="Typ de letter voordat hij de bodem raakt. Je hebt 3 levens!";
+  stopLoop(); spel=null; document.getElementById("spelScore").textContent="0";
+  document.getElementById("spelLevens").textContent="❤️❤️❤️";
+  document.getElementById("spelRecord").textContent=cur.record||0;
+};
+document.getElementById("winkelKnop").onclick=toonWinkel;
+document.getElementById("rapportKnop").onclick=toonRapport;
+document.getElementById("diplomaKnop").onclick=toonDiploma;
+document.getElementById("spelStart").onclick=startSpel;
+document.getElementById("spelStop").onclick=function(){
+  if(spel && spel.loopt){
+    spel.loopt=false; stopLoop(); bewaarScore();
+    if(spelStation!==null){ spelStationKlaar(spel.score); return; }  // voortgang niet laten vervallen
+  }
+  ga("menu");
+};
+
+/* ================================================================
+   8. Toetsaanslagen
+   ================================================================ */
+document.addEventListener("keydown",function(e){
+  if(e.ctrlKey||e.altKey||e.metaKey) return;           // sneltoetsen van de browser vrij laten
+  // staat er een venster open, dan mag je daar gewoon in typen
+  if(document.querySelector(".modal.aan")){
+    if(e.key==="Escape"){
+      document.getElementById("fbModal").classList.remove("aan");
+      document.getElementById("codeModal").classList.remove("aan");
+      document.getElementById("accountModal").classList.remove("aan");
+    }
+    return;
+  }
+  if(scherm==="vingers"){                              // vingerles gaat met de muis
+    if(e.key==="Escape") ga("menu");
+    return;
+  }
+  if(scherm==="les"||scherm==="spel"){
+    if(e.key==="Escape"){ e.preventDefault(); if(scherm==="spel"){ document.getElementById("spelStop").click(); } else ga("menu"); return; }
+    if(e.key==="Tab"||e.key===" "||e.key==="Backspace"||e.key==="Enter"){ e.preventDefault(); }
+    if(e.key.length!==1) return;                        // Shift, Dead keys, F-toetsen negeren
+    e.preventDefault();
+    if(scherm==="les") lesToets(e.key); else spelToets(e.key.toLowerCase());
+  } else if(scherm==="nieuw" && e.key==="Enter"){
+    document.getElementById("maakProfiel").click();
+  }
+});
+
+/* ================================================================
+   8b. Feedback (Netlify Forms) en voortgangscode
+   ================================================================ */
+var APPVERSIE="2.0";
+var FORMNAAM="feedback-cursus";
+var fbAntwoord={leuk:"",moeilijk:"",wie:""}, fbModule="algemeen";
+
+function zetKeuzeGroep(boxId,sleutel){
+  var box=document.getElementById(boxId);
+  box.addEventListener("click",function(e){
+    var k=e.target, knoppen=box.querySelectorAll("[data-w]");
+    while(k && k!==box && !k.getAttribute("data-w")) k=k.parentNode;
+    if(!k || k===box) return;
+    for(var i=0;i<knoppen.length;i++) knoppen[i].classList.remove("uit");
+    k.classList.add("uit");
+    fbAntwoord[sleutel]=k.getAttribute("data-w");
+  });
+}
+function toonFeedback(mod){
+  fbModule = mod || "algemeen";
+  fbAntwoord={leuk:"",moeilijk:"",wie:""};
+  ["fbLeuk","fbMoeilijk","fbWie"].forEach(function(id){
+    var n=document.getElementById(id).querySelectorAll("[data-w]");
+    for(var i=0;i<n.length;i++) n[i].classList.remove("uit");
+  });
+  document.getElementById("fbTekst").value="";
+  document.getElementById("fbMelding").textContent="";
+  document.getElementById("fbVerstuur").disabled=false;
+  document.getElementById("fbLater").textContent="Nu niet";
+  var perModule = (fbModule!=="algemeen");
+  document.getElementById("fbKop").textContent = perModule
+    ? "Module "+fbModule+" is klaar! 🎉" : "Wat vind je van Typtijgers?";
+  document.getElementById("fbIntro").textContent = perModule
+    ? "Mag ik je vier korte vragen stellen? Zo maken we de cursus beter. Je hoeft geen naam of e-mailadres in te vullen."
+    : "Vier korte vragen. Zo maken we de cursus beter. Je hoeft geen naam of e-mailadres in te vullen.";
+  document.getElementById("fbModal").classList.add("aan");
+}
+function sluitFeedback(){ document.getElementById("fbModal").classList.remove("aan"); }
+function voortgangSamenvatting(){
+  if(!cur) return "geen profiel";
+  var n=0,s=0;
+  for(var k in cur.lessen){ n++; s+=cur.lessen[k].sterren||0; }
+  return n+" van "+LESSEN.length+" lessen, "+s+" sterren";
+}
+// bouwt de body zoals een gewoon HTML-formulier dat doet
+function alsFormulier(data){
+  return Object.keys(data).map(function(k){
+    return encodeURIComponent(k)+"="+encodeURIComponent(data[k]);
+  }).join("&");
+}
+function verstuurFeedback(){
+  var melding=document.getElementById("fbMelding");
+  if(!fbAntwoord.leuk){ melding.textContent="Kies eerst een smiley bij vraag 1."; return; }
+  var mi = cur?modusInfo(cur.modus):null;
+  var data={
+    "form-name":FORMNAAM,
+    module:String(fbModule),
+    niveau: mi ? mi.naam : "onbekend",
+    leuk:fbAntwoord.leuk, moeilijk:fbAntwoord.moeilijk||"niet ingevuld",
+    wie:fbAntwoord.wie||"niet ingevuld",
+    opmerking:document.getElementById("fbTekst").value.slice(0,600),
+    voortgang:voortgangSamenvatting(),
+    versie:APPVERSIE
+  };
+  if(cur){ cur.feedback=cur.feedback||{}; cur.feedback[fbModule]=true; bewaar(); }
+  document.getElementById("fbVerstuur").disabled=true;
+  melding.textContent="Bezig met versturen...";
+  stuurOp(data, function(gelukt){
+    if(gelukt){
+      melding.textContent="Dank je wel! 🐅";
+      setTimeout(sluitFeedback,1200);
+    } else {
+      bewaarInWachtrij(data);
+      melding.innerHTML="Versturen lukte nu niet (geen internet?). We bewaren je antwoord en proberen het later nog een keer.";
+      document.getElementById("fbLater").textContent="Sluiten";
+    }
+  });
+}
+function stuurOp(data,klaar){
+  // vanaf de harde schijf (file://) is er geen server om naar te sturen
+  if(location.protocol==="file:"){ klaar(false); return; }
+  try{
+    fetch("/",{method:"POST",headers:{"Content-Type":"application/x-www-form-urlencoded"},body:alsFormulier(data)})
+      .then(function(r){ klaar(r.ok); })
+      .catch(function(){ klaar(false); });
+  }catch(e){ klaar(false); }
+}
+function bewaarInWachtrij(data){
+  try{
+    var q=JSON.parse(localStorage.getItem("typtijgers_fb")||"[]");
+    q.push(data);
+    localStorage.setItem("typtijgers_fb",JSON.stringify(q.slice(-20)));
+  }catch(e){}
+}
+// bij het openen van de site alsnog proberen wat eerder niet verstuurd kon worden
+function legWachtrijLeeg(){
+  if(location.protocol==="file:") return;
+  var q=[];
+  try{ q=JSON.parse(localStorage.getItem("typtijgers_fb")||"[]"); }catch(e){ return; }
+  if(!q.length) return;
+  var over=[], klaar=0;
+  q.forEach(function(d){
+    stuurOp(d,function(ok){
+      if(!ok) over.push(d);
+      if(++klaar===q.length){
+        try{ localStorage.setItem("typtijgers_fb",JSON.stringify(over)); }catch(e){}
+      }
+    });
+  });
+}
+
+/* ---------- voortgangscode ---------- */
+function naarBase64(s){
+  var b=new TextEncoder().encode(s), r="";
+  for(var i=0;i<b.length;i++) r+=String.fromCharCode(b[i]);
+  return btoa(r);
+}
+function uitBase64(b){
+  var s=atob(b), a=new Uint8Array(s.length);
+  for(var i=0;i<s.length;i++) a[i]=s.charCodeAt(i);
+  return new TextDecoder().decode(a);
+}
+function maakCode(p){
+  var l=[];
+  Object.keys(p.lessen||{}).forEach(function(k){
+    var r=p.lessen[k]; l.push(k+"."+(r.sterren||0)+"."+(r.acc||0)+"."+(r.wpm||0));
+  });
+  var draagt=Object.keys(p.draagt||{}).filter(function(k){ return p.draagt[k]; });
+  var ex=p.examen ? [p.examen.wpm,p.examen.acc,p.examen.gehaald?1:0,p.examen.datum||""].join(".") : "";
+  var d=["TT2",encodeURIComponent(p.naam),p.kleur,p.modus,p.record||0,(p.badges||[]).join("."),l.join("_"),
+         p.punten||0,p.besteed||0,(p.spullen||[]).join("."),draagt.join("."),ex];
+  return naarBase64(d.join("~"));
+}
+function leesCode(code){
+  var d=uitBase64(code.replace(/\s+/g,"")).split("~");
+  if(d[0]!=="TT1" && d[0]!=="TT2") throw new Error("Dit lijkt geen Typtijgers-code.");
+  var oudeNummering = (d[0]==="TT1");                  // van vóór het eerste Letterregen-station
+  var p={id:nieuwId(),naam:decodeURIComponent(d[1]||"Speler"),kleur:d[2]||KLEUREN[0],
+         modus:d[3]||"jong",geluid:true,record:parseInt(d[4],10)||0,
+         badges:d[5]?d[5].split("."):[],lessen:{}};
+  if(d[6]) d[6].split("_").forEach(function(x){
+    var v=x.split(".");
+    if(v.length!==4) return;
+    var i=parseInt(v[0],10);
+    if(oudeNummering && i>=13) i++;                    // lesnummers zijn sindsdien opgeschoven
+    p.lessen[i]={sterren:+v[1],acc:+v[2],wpm:+v[3]};
+  });
+  if(d[0]==="TT2"){
+    p.punten=parseInt(d[7],10)||0;
+    p.besteed=parseInt(d[8],10)||0;
+    p.spullen=d[9]?d[9].split("."):[];
+    p.draagt={};
+    if(d[10]) d[10].split(".").forEach(function(k){ if(k) p.draagt[k]=true; });
+    if(d[11]){
+      var e=d[11].split(".");
+      p.examen={wpm:+e[0],acc:+e[1],gehaald:e[2]==="1",datum:e[3]||""};
+    }
+  }
+  vulProfielAan(p);
+  return p;
+}
+function toonCodeVenster(){
+  var uit=document.getElementById("codeUit");
+  var p=cur||db.profielen[db.profielen.length-1];
+  uit.textContent = p ? maakCode(p) : "Maak eerst een speler aan.";
+  document.getElementById("codeIn").value="";
+  document.getElementById("codeMelding").textContent = p ? ("Code van: "+p.naam) : "";
+  document.getElementById("codeModal").classList.add("aan");
+}
+
+/* ================================================================
+   8b. Online account (Supabase): voortgang op elk apparaat
+   ================================================================ */
+// >>>>>>>>>> STAP 6: HIER DE GEGEVENS UIT SUPABASE INVULLEN <<<<<<<<<<
+// Deze twee waarden mogen openbaar zijn: de database laat iedereen alleen
+// zijn eigen gegevens zien (Row Level Security). Zet hier NOOIT de service_role key.
+var SUPABASE_URL = "VUL_HIER_DE_SUPABASE_PROJECT_URL_IN";
+var SUPABASE_KEY = "VUL_HIER_DE_SUPABASE_PUBLISHABLE_KEY_IN";
+// >>>>>>>>>> EINDE STAP 6 <<<<<<<<<<
+
+var Online=(function(){
+  var sb=null, gebruiker=null, timer=null, bezig=false, nogEens=false, verstuurd={}, laatsteMail="";
+  var TABEL="spelers";
+  function $(id){ return document.getElementById(id); }
+  function aan(){ return !!(sb && gebruiker); }
+  function melding(t){ $("accMelding").textContent=t||""; }
+  function zetStatus(t){ $("accStatus").textContent=t; }
+  function bewaarLokaal(){ try{ localStorage.setItem(KEY,JSON.stringify(db)); }catch(e){} }
+
+  function start(){
+    if(location.protocol==="file:") return;                          // los geopend: alleen dit apparaat
+    if(!/^https:\/\//.test(SUPABASE_URL) || SUPABASE_KEY.indexOf("VUL_HIER")===0) return;   // nog niet ingevuld
+    if(!window.supabase || !window.supabase.createClient) return;    // geen internet bij het laden
+    try{
+      sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY,{
+        auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true,
+              flowType:"implicit",storageKey:"typtijgers_login"}
+      });
+    }catch(e){ sb=null; return; }
+    var fout=foutUitAdres();
+    knoppen();
+    $("accountChip").style.display="flex";
+    toonStatus();
+    sb.auth.onAuthStateChange(function(event,session){
+      // geen Supabase-aanroepen direct hierbinnen doen; eerst even loslaten
+      setTimeout(function(){ wijziging(session); },0);
+    });
+    window.addEventListener("online",plan);
+    document.addEventListener("visibilitychange",function(){ if(document.visibilityState==="hidden") stuur(); });
+    if(fout){ openVenster(); melding(fout); }
+  }
+
+  // een verlopen of al gebruikte inloglink komt terug met een foutmelding in het adres
+  function foutUitAdres(){
+    var h=(location.hash||"")+"&"+(location.search||"");
+    if(h.indexOf("error")<0) return "";
+    try{ history.replaceState(null,"",location.pathname); }catch(e){}
+    return "Deze inloglink werkt niet meer (verlopen of al gebruikt). Vraag hieronder een nieuwe aan.";
+  }
+
+  function wijziging(session){
+    var was=gebruiker;
+    gebruiker = session ? session.user : null;
+    toonStatus();
+    if(gebruiker && (!was || was.id!==gebruiker.id)){
+      if($("accountModal").classList.contains("aan")) toonStap("In");
+      haalOp();
+    }
+  }
+
+  function haalOp(){
+    zetStatus("Voortgang ophalen...");
+    sb.from(TABEL).select("id,data").then(function(res){
+      if(res.error){ zetStatus("Ophalen lukte nu niet. Op dit apparaat staat alles veilig; we proberen het later opnieuw."); return; }
+      voegSamen(res.data||[]);
+    });
+  }
+
+  // Online en dit apparaat samenvoegen. Per speler wint de nieuwste versie.
+  // Spelers die alleen op dit apparaat stonden, gaan mee naar het account.
+  function voegSamen(rijen){
+    if(db.eigenaar && db.eigenaar!==gebruiker.id){            // apparaat was van een ander account
+      db.profielen=[]; db.weg=[]; snap={}; cur=null;
+    }
+    verstuurd={};
+    var lokaal={};
+    db.profielen.forEach(function(p){ lokaal[p.id]=p; });
+    rijen.forEach(function(r){
+      if(db.weg.indexOf(r.id)>=0) return;                      // hier al verwijderd
+      var p=r.data;
+      if(!p || typeof p!=="object") return;
+      p.id=r.id; vulProfielAan(p);
+      if(typeof p.gewijzigd!=="number") p.gewijzigd=1;
+      var l=lokaal[r.id];
+      if(!l){ db.profielen.push(p); }
+      else if(p.gewijzigd>=(l.gewijzigd||0)){
+        db.profielen[db.profielen.indexOf(l)]=p;
+        if(cur && cur.id===p.id) cur=p;
+      } else { return; }                                       // versie hier is nieuwer: die gaat zo online
+      snap[p.id]=zonderTijd(p); verstuurd[p.id]=snap[p.id];
+    });
+    db.eigenaar=gebruiker.id;
+    bewaarLokaal();
+    zetStatus("De voortgang van alle spelers wordt online bewaard.");
+    if(scherm==="profielen") toonProfielen();
+    else if(scherm==="nieuw" && db.profielen.length) ga("profielen");
+    else if(scherm==="menu" && cur){ toonChips(); toonMenu(); }
+    stuur();
+  }
+
+  function onverstuurd(){
+    if(db.weg.length) return true;
+    return db.profielen.some(function(p){ return verstuurd[p.id]!==(snap[p.id]||zonderTijd(p)); });
+  }
+
+  function plan(){ if(!aan()) return; clearTimeout(timer); timer=setTimeout(stuur,1500); }
+
+  function stuur(){
+    clearTimeout(timer); timer=null;
+    if(!aan() || db.eigenaar!==gebruiker.id) return;          // eerst ophalen, dan pas versturen
+    if(bezig){ nogEens=true; return; }
+    var rijen=[], klaar=[], weg=db.weg.slice();
+    db.profielen.forEach(function(p){
+      var j=snap[p.id]||zonderTijd(p);
+      if(verstuurd[p.id]!==j){
+        rijen.push({user_id:gebruiker.id,id:p.id,bijnaam:String(p.naam||"Speler").slice(0,14),data:p});
+        klaar.push([p.id,j]);
+      }
+    });
+    if(!rijen.length && !weg.length) return;
+    bezig=true;
+    var klussen=[];
+    if(rijen.length) klussen.push(sb.from(TABEL).upsert(rijen,{onConflict:"user_id,id"}).then(function(r){
+      if(r.error) throw r.error;
+      klaar.forEach(function(x){ verstuurd[x[0]]=x[1]; });
+    }));
+    if(weg.length) klussen.push(sb.from(TABEL).delete().in("id",weg).then(function(r){
+      if(r.error) throw r.error;
+      db.weg=db.weg.filter(function(x){ return weg.indexOf(x)<0; });
+      bewaarLokaal();
+    }));
+    Promise.all(klussen).then(
+      function(){ zetStatus("Alles is online bewaard ✓"); },
+      function(){ zetStatus("Nog niet online bewaard (geen internet?). Op dit apparaat staat alles veilig; we proberen het straks opnieuw."); }
+    ).then(function(){ bezig=false; if(nogEens){ nogEens=false; plan(); } });
+  }
+
+  /* ---------- venster ---------- */
+  function toonStap(n){
+    ["Mail","Code","In"].forEach(function(x){ $("accStap"+x).style.display = (x===n)?"block":"none"; });
+    if(n==="In") $("accWie").textContent=gebruiker?gebruiker.email:"";
+  }
+  function openVenster(){
+    melding("");
+    toonStap(gebruiker?"In":"Mail");
+    $("accountModal").classList.add("aan");
+    if(!gebruiker) setTimeout(function(){ $("accMail").focus(); },50);
+  }
+  function sluit(){ $("accountModal").classList.remove("aan"); }
+
+  function toonStatus(){
+    var chip=$("accountChip"), regel=$("opslagRegel");
+    if(gebruiker){
+      chip.textContent="☁️ Ingelogd"; chip.classList.add("online");
+      chip.title="Ingelogd als "+gebruiker.email;
+      regel.innerHTML="☁️ Je voortgang wordt online bewaard. Je kunt op elk apparaat verder.";
+    } else {
+      chip.textContent="👤 Inloggen"; chip.classList.remove("online");
+      chip.title="Inloggen om je voortgang op elk apparaat te bewaren";
+      regel.innerHTML='Je voortgang wordt bewaard op dit apparaat, in deze browser.<br>'+
+        '<button class="linkknop" id="opslagLogin">Gratis account voor ouders</button> om op elk apparaat verder te kunnen.';
+      $("opslagLogin").onclick=openVenster;
+    }
+  }
+
+  function terugAdres(){ return location.origin+location.pathname; }
+
+  function stuurLink(){
+    var mail=$("accMail").value.trim();
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail)){ melding("Vul een geldig e-mailadres in."); $("accMail").focus(); return; }
+    if(!$("accOuder").checked){ melding("Vink eerst aan dat je ouder of verzorger bent."); return; }
+    $("accStuur").disabled=true; melding("Bezig met versturen...");
+    sb.auth.signInWithOtp({email:mail,options:{emailRedirectTo:terugAdres(),shouldCreateUser:true}}).then(function(r){
+      $("accStuur").disabled=false;
+      if(r.error){
+        melding(r.error.status===429
+          ? "Je hebt net al een mail aangevraagd. Wacht een minuut en probeer het dan opnieuw."
+          : "Versturen lukte niet. Controleer het e-mailadres en probeer het opnieuw.");
+        return;
+      }
+      laatsteMail=mail; $("accMailTerug").textContent=mail; $("accCode").value="";
+      toonStap("Code"); melding("");
+    });
+  }
+
+  function checkCode(){
+    var code=$("accCode").value.replace(/\D/g,"");
+    if(code.length<6){ melding("Typ de cijfers uit de mail."); $("accCode").focus(); return; }
+    $("accCodeKnop").disabled=true; melding("Bezig met inloggen...");
+    sb.auth.verifyOtp({email:laatsteMail,token:code,type:"email"}).then(function(r){
+      $("accCodeKnop").disabled=false;
+      if(r.error){ melding("Deze code klopt niet of is verlopen. Vraag een nieuwe mail aan."); return; }
+      melding(""); sluit();
+    });
+  }
+
+  function maakApparaatLeeg(){
+    db={profielen:[],laatste:null,weg:[]}; snap={}; verstuurd={}; cur=null; gebruiker=null;
+    bewaarLokaal(); toonStatus(); sluit();
+    ga("nieuw"); kiesKleur(0);
+  }
+
+  function uitloggen(){
+    stuur();
+    var pogingen=0;
+    (function wacht(){
+      if(bezig && pogingen++<25){ setTimeout(wacht,200); return; }
+      if(onverstuurd() && !confirm("Niet alles is online bewaard (geen internet?). Als je nu uitlogt, gaat de nieuwste voortgang op dit apparaat verloren. Toch uitloggen?")) return;
+      melding("Bezig met uitloggen...");
+      sb.auth.signOut().then(maakApparaatLeeg,maakApparaatLeeg);
+    })();
+  }
+
+  function verwijderAccount(){
+    if(!confirm("Weet je het zeker? Je account en de online voortgang van alle spelers worden verwijderd. Dit kan niet ongedaan worden gemaakt.")) return;
+    melding("Bezig met verwijderen...");
+    sb.rpc("verwijder_mijn_account").then(function(r){
+      if(r.error){ melding("Verwijderen lukte niet. Probeer het later opnieuw."); return; }
+      sb.auth.signOut().then(maakApparaatLeeg,maakApparaatLeeg);
+    });
+  }
+
+  function knoppen(){
+    $("accountChip").onclick=openVenster;
+    $("accStuur").onclick=stuurLink;
+    $("accCodeKnop").onclick=checkCode;
+    $("accOpnieuw").onclick=function(){ toonStap("Mail"); melding(""); };
+    $("accUit").onclick=uitloggen;
+    $("accWeg").onclick=verwijderAccount;
+    $("accMail").addEventListener("keydown",function(e){ if(e.key==="Enter") stuurLink(); });
+    $("accCode").addEventListener("keydown",function(e){ if(e.key==="Enter") checkCode(); });
+    var s=document.querySelectorAll("[data-acc-sluit]");
+    for(var i=0;i<s.length;i++) s[i].onclick=sluit;
+  }
+
+  return {start:start, plan:plan};
+})();
+
+/* ================================================================
+   9. Start
+   ================================================================ */
+function esc(s){ return String(s).replace(/[&<>"]/g,function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]; }); }
+laad();
+bouwJungle();
+document.getElementById("logoTijger").innerHTML=tijgerSvg();
+document.getElementById("grotetijger").innerHTML=tijgerSvg();
+kbUit=bouwToetsenbord(document.getElementById("kbUitleg"));
+bouwLegenda(document.getElementById("legenda"));
+bouwHanden(document.getElementById("handenUitleg"),{labels:true});
+bouwModusKiezer();
+
+/* ---------- feedback- en codeknoppen ---------- */
+zetKeuzeGroep("fbLeuk","leuk");
+zetKeuzeGroep("fbMoeilijk","moeilijk");
+zetKeuzeGroep("fbWie","wie");
+document.getElementById("fbVerstuur").onclick=verstuurFeedback;
+document.getElementById("fbLater").onclick=sluitFeedback;
+document.getElementById("feedbackKop").onclick=function(){ toonFeedback("algemeen"); };
+document.getElementById("feedbackVoet").onclick=function(){ toonFeedback("algemeen"); };
+document.getElementById("codeKnop").onclick=toonCodeVenster;
+document.getElementById("codeSluit").onclick=function(){ document.getElementById("codeModal").classList.remove("aan"); };
+document.getElementById("codeKopieer").onclick=function(){
+  var t=document.getElementById("codeUit").textContent, m=document.getElementById("codeMelding");
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(t).then(
+      function(){ m.textContent="Code gekopieerd! Bewaar hem goed."; },
+      function(){ m.textContent="Kopieren lukte niet. Selecteer de code en druk op Ctrl+C."; });
+  } else { m.textContent="Selecteer de code en druk op Ctrl+C."; }
+};
+document.getElementById("codeLees").onclick=function(){
+  var m=document.getElementById("codeMelding"), v=document.getElementById("codeIn").value.trim();
+  if(!v){ m.textContent="Plak eerst een code in het vak."; return; }
+  try{
+    var p=leesCode(v);
+    db.profielen.push(p); db.laatste=p.id; bewaar(); toonProfielen();
+    m.textContent="Gelukt! De voortgang van "+p.naam+" staat er nu bij.";
+    setTimeout(function(){ document.getElementById("codeModal").classList.remove("aan"); },1500);
+  }catch(err){
+    m.textContent="Deze code werkt niet. Kopieer hem helemaal, van het begin tot het eind.";
+  }
+};
+legWachtrijLeeg();
+Online.start();
+
+if(!db.profielen.length){ ga("nieuw"); kiesKleur(0); }
+else { ga("profielen"); }
+
+})();
+</script>
+</body>
+</html>

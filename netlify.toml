@@ -1,0 +1,39 @@
+# Instellingen voor Netlify. Er wordt niets gebouwd of gecompileerd:
+# de map met HTML-bestanden wordt precies zo online gezet.
+
+[build]
+  publish = "."
+
+# Nette adressen. status = 200 betekent: zelfde inhoud, geen omleiding.
+# Deze twee adressen staan ook in de canonical-tags en in sitemap.xml, dus ze moeten werken.
+[[redirects]]
+  from = "/cursus"
+  to = "/Typtijgers.html"
+  status = 200
+
+[[redirects]]
+  from = "/privacy"
+  to = "/privacy.html"
+  status = 200
+
+# Deze bestanden zitten wel in de map, maar horen niet op de website.
+# force = true is nodig, anders wint het bestand zelf van de regel.
+[[redirects]]
+  from = "/LEESMIJ.md"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/.claude/*"
+  to = "/"
+  status = 301
+  force = true
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "no-referrer"
+    Permissions-Policy = "geolocation=(), camera=(), microphone=(), interest-cohort=()"
