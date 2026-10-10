@@ -19,9 +19,12 @@
 <meta property="og:image" content="https://www.typtijgers.nl/og-typtijgers.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<!-- Supabase: voor inloggen en online voortgang. Zonder internet laadt dit niet,
-     dan werkt de cursus gewoon zoals altijd, met voortgang op dit apparaat. -->
+<!-- Inloggen staat uit. Om het aan te zetten: haal de regel hieronder uit het commentaar
+     en vul SUPABASE_URL en SUPABASE_KEY in (zoek op "INLOGGEN STAAT UIT").
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+-->
+<!-- verder geen externe bestanden: de cursus werkt helemaal los -->
+
 <style>
 /* ============================== basis ============================== */
 :root{
@@ -2391,12 +2394,18 @@ function toonCodeVenster(){
 /* ================================================================
    8b. Online account (Supabase): voortgang op elk apparaat
    ================================================================ */
-// >>>>>>>>>> STAP 6: HIER DE GEGEVENS UIT SUPABASE INVULLEN <<<<<<<<<<
-// Deze twee waarden mogen openbaar zijn: de database laat iedereen alleen
-// zijn eigen gegevens zien (Row Level Security). Zet hier NOOIT de service_role key.
-var SUPABASE_URL = "https://dseloriwnezrurjxiwzf.supabase.co";
-var SUPABASE_KEY = "sb_publishable_OQCyYF5rqWOrPlGMOUzsgw_byGhjxRI";
-// >>>>>>>>>> EINDE STAP 6 <<<<<<<<<<
+// >>>>>>>>>> INLOGGEN STAAT UIT <<<<<<<<<<
+// Zolang deze twee waarden leeg zijn, is er geen inlogknop en blijft de voortgang
+// alleen in de browser (localStorage) staan, zoals altijd.
+// Inloggen aanzetten: vul hieronder in
+//   SUPABASE_URL = "https://dseloriwnezrurjxiwzf.supabase.co"
+//   SUPABASE_KEY = "sb_publishable_OQCyYF5rqWOrPlGMOUzsgw_byGhjxRI"
+// en stel eerst in Supabase een eigen mailafzender (SMTP) in, anders komen de
+// inlogmails niet aan. Deze waarden mogen openbaar zijn (Row Level Security staat aan).
+// Zet hier NOOIT de service_role / secret key.
+var SUPABASE_URL = "";
+var SUPABASE_KEY = "";
+// >>>>>>>>>> EINDE <<<<<<<<<<
 
 var Online=(function(){
   var sb=null, gebruiker=null, timer=null, bezig=false, nogEens=false, verstuurd={}, laatsteMail="";
